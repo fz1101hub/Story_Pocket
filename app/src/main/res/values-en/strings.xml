@@ -98,5 +98,5 @@
     <string name="shared_link_not_open">The shared link has not opened yet</string>
     <string name="content_not_open">Content is not open</string>
     <string name="waiting_photo_or_video_cover">Waiting to distinguish a photo from a video thumbnail</string>
-    <string name="screenshot_photos_only_hint"> Try Screenshot only for photos.</string>
+    <string name="screenshot_photos_only_hint">Try Screenshot only for photos.</string>
 </resources>
