@@ -91,6 +91,10 @@ def main():
     if hardcoded_scan:
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_scan)} hardcoded automatic scan failures")
     print("Android: no literal automatic scan failure messages")
+    hardcoded_exceptions = re.findall(r'new\s+(?:IOException|Exception)\s*\(\s*"', activity)
+    if hardcoded_exceptions:
+        raise ValueError(f"Android/MainActivity.java: {len(hardcoded_exceptions)} untranslated exception messages")
+    print("Android: no literal transfer exception messages")
     check("iOS", ios, IOS_PLACEHOLDER)
     # System permission prompts live in InfoPlist.strings, not Localizable.strings.
     ios_privacy = {
