@@ -24,4 +24,9 @@ public final class VideoUrlPolicy {
             if (path.matches(".*\\.mp4$")) return 130;
             if (path.matches(".*\\.(?:mov|webm)$")) return 100;
             if (query.contains("mime_type=video") || query.contains("mimetype=video") || query.contains("dst-mp4")) return 105;
-            if (path.contains("/o1/v/t16/") || path.contai¶»§q«^
+            if (path.contains("/o1/v/t16/") || path.contains("/v/t16/")) return 72;
+            if (path.contains("/video/") || path.contains("/videos/")) return 52;
+            return 0;
+        } catch (RuntimeException ignored) { return 0; }
+    }
+}

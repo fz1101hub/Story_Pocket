@@ -18,4 +18,15 @@ public final class OriginalVideoCheck {
         yes(VideoUrlPolicy.score("https://scontent.cdninstagram.com/v/x.m4s")==0,"rifiuta M4S");
         yes(VideoUrlPolicy.score("https://scontent.cdninstagram.com/v/x.mp4?bytestart=0&byteend=123")==0,"rifiuta frammento range");
         yes(VideoUrlPolicy.score("https://scontent.cdninstagram.com/v/x.mp4?stp=dst-jpg")==0,"rifiuta copertina mascherata");
-      ¶»§q«^
+        yes(VideoUrlPolicy.score("https://scontent.cdninstagram.com/v/x.mp4?foo=bar")>0,"accetta query firmata");
+        byte[] mp4=new byte[24]; System.arraycopy("ftyp".getBytes(),0,mp4,4,4);
+        byte[] segment=new byte[24]; System.arraycopy("styp".getBytes(),0,segment,4,4);
+        yes(MediaTypePolicy.classifyResponse("application/octet-stream","video",mp4).extension.equals("mp4"),"octet-stream magic MP4");
+        yes(!MediaTypePolicy.hasValidSignature(MediaTypePolicy.classify("video/mp4"),segment),"frammento MP4 rifiutato");
+        boolean failed=false;
+        try {MediaTypePolicy.classifyResponse("application/octet-stream","video",segment);}catch(IllegalArgumentException e){failed=true;}
+        yes(failed,"octet-stream fragment rifiutato");
+        yes(TargetParser.isTrustedMediaUrl(cdn),"origine CDN sicura");
+        System.out.println("OK: " + checked + " controlli Video originale.");
+    }
+}

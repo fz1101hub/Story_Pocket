@@ -31,4 +31,12 @@ public final class NavigationPolicy {
             if ("https".equals(scheme) && SocialLinks.isSupported(value)) {
                 return Decision.IN_WEBVIEW;
             }
-            if ("http".equals(sc¶»§q«^
+            if ("http".equals(scheme) || "https".equals(scheme)) {
+                return Decision.BLOCK_EXTERNAL_WEB;
+            }
+            return Decision.BLOCK_UNSAFE_SCHEME;
+        } catch (RuntimeException ignored) {
+            return Decision.BLOCK_UNSAFE_SCHEME;
+        }
+    }
+}

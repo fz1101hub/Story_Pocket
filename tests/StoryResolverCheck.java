@@ -15,4 +15,13 @@ public class StoryResolverCheck {
   var result=InstagramStoryResolver.parseMetadata(p,"123456789012345678",false);
   check(result!=null&&result.mediaType.equals("video")&&result.mediaUrl.endsWith("full.mp4"),"exact story best video");
   check(InstagramStoryResolver.parseMetadata(p,"555555555",false)==null,"adjacent story rejected");
-  String onlyCover="{\"items\":[{\"id\":\"123456789012345678_4567\",\¶»§q«^
+  String onlyCover="{\"items\":[{\"id\":\"123456789012345678_4567\",\"media_type\":2,\"image_versions2\":{\"candidates\":[{\"url\":\"https://a.cdninstagram.com/cover.jpg\"}]}}]}";
+  check(InstagramStoryResolver.parseMetadata(onlyCover,"123456789012345678",false)==null,"video cover rejected");
+  String photo="{\"items\":[{\"pk\":\"123456789012345678\",\"media_type\":1,\"image_versions2\":{\"candidates\":[{\"url\":\"https://a.cdninstagram.com/photo.jpg\"}]}}]}";
+  check(InstagramStoryResolver.parseMetadata(photo,"123456789012345678",false)!=null,"photo can be saved");
+  check(InstagramStoryResolver.parseMetadata(photo,"123456789012345678",true)==null,"video-only rejects photo");
+  String bad="{\"items\":[{\"pk\":\"123456789012345678\",\"media_type\":2,\"video_versions\":[{\"url\":\"https://evil.invalid/unsafe.mp4\"}]}]}";
+  check(InstagramStoryResolver.parseMetadata(bad,"123456789012345678",true)==null,"unsafe host rejected");
+  System.out.println("PASS: "+count+" Story-specific resolver checks");
+ }
+}

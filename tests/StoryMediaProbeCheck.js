@@ -16,4 +16,14 @@ function run(id,payload,videoplayer=true){
  const ctx={URL,innerWidth:900,innerHeight:900,location:{pathname:`/stories/alice/${id}/`},
   performance:{getEntriesByType:()=>[]},getComputedStyle:()=>({display:'block',visibility:'visible',opacity:'1'}),
   document:{querySelectorAll:tag=>tag==='script'?[{textContent:JSON.stringify(payload)}]:elements.filter(e=>e.type===tag).map(e=>e.value)}};
- return JSON.parse(vm.runInNewContext(script,c¶»§q«^
+ return JSON.parse(vm.runInNewContext(script,ctx));
+}
+let tests=0;function check(b,desc){assert.ok(b,desc);tests++;}
+let obj={reels_media:[{items:[{pk:'999999999',media_type:2,video_versions:[{url:'https://a.cdninstagram.com/wrong.mp4'}]},
+ {pk:movieId,media_type:2,image_versions2:{candidates:[{url:image}]},video_versions:[{url:video,width:1080,height:1920}]}]}]};
+check(run(movieId,obj).url===video,'correct Story video in nested JSON');
+check(run('111111111111111111',obj).error?.includes('video'),'reject other Story video');
+check(run(movieId,{items:[{pk:movieId,media_type:2,image_versions2:{candidates:[{url:image}]}}]},false).error?.includes('copertina'),'video metadata without MP4 rejects cover');
+check(run(movieId,{items:[{pk:movieId,media_type:2,video_versions:[{url:'https://evil.invalid/m.mp4'}]}]}).error?.includes('video'),'untrusted URL ignored');
+check(run(movieId,{items:[{pk:movieId,media_type:1,image_versions2:{candidates:[{url:image,width:1000,height:1000}]}}]},false).type==='image','Story photo can be saved');
+console.log('PASS: '+tests+' Story DOM JSON scenarios');

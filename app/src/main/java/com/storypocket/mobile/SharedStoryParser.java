@@ -31,4 +31,10 @@ public final class SharedStoryParser {
     private static String trimPunctuation(String url) {
         while (!url.isEmpty()) {
             char c = url.charAt(url.length() - 1);
-            if (c == '¶»§q«^
+            if (c == '.' || c == ',' || c == ';' || c == '!' || c == ')' || c == ']' || c == '>' || c == ':' || c == '}')
+                url = url.substring(0, url.length()-1);
+            else break;
+        }
+        return url;
+    }
+}
