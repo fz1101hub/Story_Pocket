@@ -45,4 +45,21 @@
     <string name="open_instagram_page">Öffne eine Instagram-Seite im StoryPocket-Browser.</string>
     <string name="media_found_saving">Inhalt gefunden: Speichern wird versucht…</string>
     <string name="invalid_media_link">Der Medienlink ist ungültig.</string>
+    <string name="identify_visible_media">Sichtbarer Beitrag, Reel oder Story wird erkannt…</string>
+    <string name="instagram_no_response">Instagram antwortet nicht: Öffne den Inhalt und versuche es erneut.</string>
+    <string name="search_visible_media">Suche nach sichtbaren Medien (maximal 6 Sekunden)…</string>
+    <string name="player_timeout">Player antwortet seit 6 Sekunden nicht. Erneut versuchen oder Screenshot nutzen.</string>
+    <string name="story_page_changed">Die Seite hat sich geändert: Speichere die gewünschte Story erneut.</string>
+    <string name="auto_download_started">Medium gefunden: automatischer Download läuft…</string>
+    <string name="direct_download_unavailable">Dieser Inhalt bietet keinen direkten Download.</string>
+    <string name="instagram_metadata_fallback">Kein MP4 im Player: Instagram-Originaldaten des Reels/Beitrags werden geprüft…</string>
+    <string name="story_changed">Die Story hat sich geändert: Öffne die gewünschte Story erneut.</string>
+    <string name="story_metadata_search">Story erkannt: Instagram-Originaldaten werden geprüft (nicht das Titelbild)…</string>
+    <string name="download_timeout">Download abgebrochen: 45 Sekunden überschritten.</string>
+    <string name="instagram_download_timeout">Zeitüberschreitung: Instagram hat den Download nicht abgeschlossen.</string>
+    <string name="open_social_to_capture">Öffne einen Social-Media-Inhalt für die Aufnahme.</string>
+    <string name="story_not_ready">Die Story ist noch nicht bereit.</string>
+    <string name="capturing_screen">Sichtbarer Bildschirm wird aufgenommen…</string>
+    <string name="screen_capture_failed">Bildschirmaufnahme fehlgeschlagen.</string>
+    <string name="capture_not_allowed">Das Gerät oder der Player erlaubt diese Aufnahme nicht.</string>
 </resources>
