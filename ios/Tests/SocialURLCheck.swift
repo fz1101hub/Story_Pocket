@@ -34,6 +34,6 @@ struct SocialURLCheck {
         expectIncoming("storypocket://open?url=https%3A%2F%2Finstagram.com%2Fp&url=https%3A%2F%2Fx.com", nil)
         expectIncoming("storypocket://evil?url=https%3A%2F%2Finstagram.com%2Fp", nil)
         expectIncoming("storypocket://open/other?url=https%3A%2F%2Finstagram.com%2Fp", nil)
-                print("SocialURL checks passed")
+        print("SocialURL checks passed")
     }
 }
