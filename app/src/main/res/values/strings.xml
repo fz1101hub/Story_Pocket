@@ -112,4 +112,6 @@
     <string name="download_wrong_media_type">Il social ha restituito un media di tipo diverso (possibile copertina).</string>
     <string name="download_invalid_response">Il server ha restituito una pagina o un file non valido.</string>
     <string name="shared_file_too_large">File troppo grande (oltre 120 MB).</string>
+    <string name="download_progress">Scaricati %1$d KB…</string>
+    <string name="download_progress_total">Scaricati %1$d di %2$d KB…</string>
 </resources>
