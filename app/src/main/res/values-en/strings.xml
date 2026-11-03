@@ -45,4 +45,21 @@
     <string name="open_instagram_page">Open an Instagram page in the StoryPocket browser.</string>
     <string name="media_found_saving">Content found: attempting to save…</string>
     <string name="invalid_media_link">The media link is invalid.</string>
+    <string name="identify_visible_media">Identifying the visible Post, Reel or Story…</string>
+    <string name="instagram_no_response">Instagram did not respond: open the content and try again.</string>
+    <string name="search_visible_media">Searching for visible media (up to 6 seconds)…</string>
+    <string name="player_timeout">Player did not respond within 6 seconds. Try again or use Screenshot.</string>
+    <string name="story_page_changed">The page changed: save again from the desired Story.</string>
+    <string name="auto_download_started">Media found: automatic download in progress…</string>
+    <string name="direct_download_unavailable">This content does not provide a direct download.</string>
+    <string name="instagram_metadata_fallback">No MP4 from the player: trying original Instagram Reel/Post metadata…</string>
+    <string name="story_changed">The Story changed: reopen the one you want to save.</string>
+    <string name="story_metadata_search">Story identified: trying original Instagram metadata (not the cover image)…</string>
+    <string name="download_timeout">Download stopped: exceeded 45 seconds.</string>
+    <string name="instagram_download_timeout">Timed out: Instagram did not complete the download.</string>
+    <string name="open_social_to_capture">Open social content to capture.</string>
+    <string name="story_not_ready">The Story is not ready yet.</string>
+    <string name="capturing_screen">Capturing the visible screen…</string>
+    <string name="screen_capture_failed">Screen capture failed.</string>
+    <string name="capture_not_allowed">The device or player does not allow this capture.</string>
 </resources>
