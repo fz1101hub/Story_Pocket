@@ -41,4 +41,8 @@
     <string name="profile_link_received">Profile link received. Open a Post, Reel or Story and tap Save.</string>
     <string name="auto_save_busy">Another save is already in progress. Automatic operation stopped.</string>
     <string name="auto_page_mismatch">Page differs from the shared link: automatic search stopped.</string>
+    <string name="auto_no_media">Search finished: no downloadable media found.</string>
+    <string name="open_instagram_page">Open an Instagram page in the StoryPocket browser.</string>
+    <string name="media_found_saving">Content found: attempting to save…</string>
+    <string name="invalid_media_link">The media link is invalid.</string>
 </resources>
