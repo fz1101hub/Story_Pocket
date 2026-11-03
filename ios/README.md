@@ -21,6 +21,22 @@ swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift -o /tmp
 /tmp/storypocket-social-url-check
 ```
 
+## Local media import checks
+
+Both the app and Share Extension accept explicitly selected JPEG, PNG, HEIC/HEIF,
+GIF, MOV, MP4 and M4V files. A shared Foundation-only policy rejects missing,
+empty, unsupported and nonregular files before requesting Photos access. The
+iOS workflow compiles and executes both the URL tests and media policy tests:
+
+```sh
+swiftc ios/Sources/Shared/MediaFilePolicy.swift ios/Tests/MediaFilePolicyCheck.swift -o /tmp/storypocket-media-check
+/tmp/storypocket-media-check
+python3 tests/IOSProjectCheck.py
+```
+
+These checks do not prove that PhotoKit saving succeeds on an iPhone; device
+permission and file-format testing are still required.
+
 ## Scope and safety
 
 The current iOS prototype does **not** automatically download social media, bypass authentication, or access private posts. The Share Extension already accepts user-selected files and social links; it does not fetch remote media. Device distribution requires signing and provisioning; never commit credentials.
