@@ -41,6 +41,12 @@ require("SocialURL.extract(link)" in app,
         "main app validates pasted social links")
 require("SocialURL.extract(text)" in share,
         "share extension validates shared text links")
+require("MediaFilePolicy.hasContent(file)" in app
+        and "MediaFilePolicy.hasContent(file)" in share,
+        "app and extension share media validation")
+require("MediaFilePolicy.isSupported" in app
+        and "MediaFilePolicy.isSupported" in share,
+        "unsupported imports are rejected before saving")
 require("requestAuthorization(for: .addOnly)" in app
         and "requestAuthorization(for: .addOnly)" in share,
         "both Photos save paths request add-only permission")
@@ -52,6 +58,8 @@ require("URLSession.shared" not in share,
         "share extension does not fetch remote media")
 require("swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift" in workflow,
         "CI compiles and runs standalone Swift URL tests")
+require("MediaFilePolicy.swift ios/Tests/MediaFilePolicyCheck.swift" in workflow,
+        "CI compiles and runs shared media policy tests")
 require("CODE_SIGNING_ALLOWED=NO build" in workflow,
         "CI builds unsigned iOS simulator app")
 print("iOS project preflight passed.")
