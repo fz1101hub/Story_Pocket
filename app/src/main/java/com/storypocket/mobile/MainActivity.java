@@ -449,11 +449,11 @@ public final class MainActivity extends Activity {
         }
         if (TargetParser.canAutoDownload(target)) {
             beginAutoDownload(target);
-            status("Link ricevuto. Ricerca automatica: massimo 25 secondi…");
+            status(getString(R.string.auto_search_started));
             browser.loadUrl(target);
             scheduleAutoDownload(2200);
         } else {
-            status("Link del profilo ricevuto. Apri un Post, Reel o Story e premi Salva.");
+            status(getString(R.string.profile_link_received));
             browser.loadUrl(target);
         }
         return true;
@@ -509,14 +509,14 @@ public final class MainActivity extends Activity {
         if (SystemClock.elapsedRealtime() >= autoDeadline) { autoTimeout.run(); return; }
         if (isSaving) {
             cancelAutoDownload();
-            status("Un altro salvataggio è già in corso. Operazione automatica terminata.");
+            status(getString(R.string.auto_save_busy));
             return;
         }
         String page = browser.getUrl();
         if (!sameSharedContent(page, pendingSharedContent)) {
             // Login o redirect: non cercare video di profili diversi.
             cancelAutoDownload();
-            status("Pagina diversa dal link condiviso: ricerca automatica fermata.");
+            status(getString(R.string.auto_page_mismatch));
             return;
         }
         autoAttempts++;
