@@ -74,6 +74,13 @@ def main():
         android[language] = android_strings(ANDROID_BASE / android_folder / "strings.xml")
         ios[language] = ios_strings(IOS_BASE / f"{language}.lproj" / "Localizable.strings")
     check("Android", android, ANDROID_PLACEHOLDER)
+    # Detect Android Java references that have no resource in the default locale.
+    activity = (ROOT / "app/src/main/java/com/storypocket/mobile/MainActivity.java").read_text(encoding="utf-8")
+    referenced = set(re.findall(r"\\bR\\.string\\.([A-Za-z_][A-Za-z_0-9]*)", activity))
+    undefined = sorted(referenced - android["it"].keys())
+    if undefined:
+        raise ValueError(f"Android/MainActivity.java: undefined string resources {undefined}")
+    print(f"Android: {len(referenced)} MainActivity string references resolved")
     check("iOS", ios, IOS_PLACEHOLDER)
     print("Localization parity checks passed.")
 
