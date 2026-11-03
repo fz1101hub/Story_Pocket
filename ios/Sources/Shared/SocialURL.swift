@@ -24,7 +24,7 @@ enum SocialURL {
 
     static func extract(_ text: String) -> URL? {
         if let url = normalize(text) { return url }
-        let pattern = #"https://[^\\s<>"']+"#
+        let pattern = #"https://[^\s<>"']+"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
             return nil
         }
