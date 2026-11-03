@@ -41,4 +41,8 @@
     <string name="profile_link_received">Lien de profil reçu. Ouvrez une publication, un Reel ou une Story, puis appuyez sur Enregistrer.</string>
     <string name="auto_save_busy">Un autre enregistrement est déjà en cours. Opération automatique arrêtée.</string>
     <string name="auto_page_mismatch">Page différente du lien partagé : recherche automatique arrêtée.</string>
+    <string name="auto_no_media">Recherche terminée : aucun média téléchargeable trouvé.</string>
+    <string name="open_instagram_page">Ouvrez une page Instagram dans le navigateur StoryPocket.</string>
+    <string name="media_found_saving">Contenu trouvé : tentative d’enregistrement…</string>
+    <string name="invalid_media_link">Le lien du média est invalide.</string>
 </resources>
