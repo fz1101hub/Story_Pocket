@@ -99,4 +99,17 @@
     <string name="content_not_open">Contenuto non aperto</string>
     <string name="waiting_photo_or_video_cover">Attendo per distinguere una foto dalla copertina del video</string>
     <string name="screenshot_photos_only_hint">Prova Screenshot solo per le foto.</string>
+    <string name="player_no_result">Nessun risultato dal player.</string>
+    <string name="download_create_failed">Impossibile creare il file in Download.</string>
+    <string name="download_open_failed">Impossibile aprire il file in Download.</string>
+    <string name="download_empty_media">Il media ricevuto è vuoto.</string>
+    <string name="download_incomplete">Download incompleto, prova di nuovo.</string>
+    <string name="shared_unsupported_media">Il file condiviso non è un media supportato.</string>
+    <string name="shared_destination_failed">Impossibile aprire il file di destinazione.</string>
+    <string name="shared_empty_file">Il file condiviso è vuoto.</string>
+    <string name="screenshot_create_failed">Impossibile creare la schermata.</string>
+    <string name="screenshot_png_failed">Impossibile scrivere il PNG.</string>
+    <string name="download_wrong_media_type">Il social ha restituito un media di tipo diverso (possibile copertina).</string>
+    <string name="download_invalid_response">Il server ha restituito una pagina o un file non valido.</string>
+    <string name="shared_file_too_large">File troppo grande (oltre 120 MB).</string>
 </resources>
