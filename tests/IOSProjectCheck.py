@@ -46,6 +46,10 @@ require("requestAuthorization(for: .addOnly)" in app
         "both Photos save paths request add-only permission")
 require("NSItemProvider" in share and "loadFileRepresentation" in share,
         "share extension receives user-selected file attachments")
+require("UIApplication.shared" not in share,
+        "share extension does not use unavailable host-app APIs")
+require("URLSession.shared" not in share,
+        "share extension does not fetch remote media")
 require("swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift" in workflow,
         "CI compiles and runs standalone Swift URL tests")
 require("CODE_SIGNING_ALLOWED=NO build" in workflow,
