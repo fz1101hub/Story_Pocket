@@ -41,4 +41,8 @@
     <string name="profile_link_received">Profillink empfangen. Öffne einen Beitrag, ein Reel oder eine Story und tippe auf Speichern.</string>
     <string name="auto_save_busy">Ein anderer Speichervorgang läuft bereits. Automatischer Vorgang beendet.</string>
     <string name="auto_page_mismatch">Seite weicht vom geteilten Link ab: automatische Suche beendet.</string>
+    <string name="auto_no_media">Suche abgeschlossen: keine herunterladbaren Medien gefunden.</string>
+    <string name="open_instagram_page">Öffne eine Instagram-Seite im StoryPocket-Browser.</string>
+    <string name="media_found_saving">Inhalt gefunden: Speichern wird versucht…</string>
+    <string name="invalid_media_link">Der Medienlink ist ungültig.</string>
 </resources>
