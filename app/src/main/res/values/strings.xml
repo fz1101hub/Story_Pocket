@@ -41,4 +41,8 @@
     <string name="profile_link_received">Link del profilo ricevuto. Apri un Post, Reel o Story e premi Salva.</string>
     <string name="auto_save_busy">Un altro salvataggio è già in corso. Operazione automatica terminata.</string>
     <string name="auto_page_mismatch">Pagina diversa dal link condiviso: ricerca automatica fermata.</string>
+    <string name="auto_no_media">Ricerca terminata: nessun media scaricabile identificato.</string>
+    <string name="open_instagram_page">Apri una pagina Instagram nel browser di StoryPocket.</string>
+    <string name="media_found_saving">Contenuto individuato: provo il salvataggio…</string>
+    <string name="invalid_media_link">Il link del media non è valido.</string>
 </resources>
