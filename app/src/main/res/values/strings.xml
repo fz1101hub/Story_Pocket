@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Salva foto e video dai tuoi social</string>
+    <string name="link_hint">Incolla un link da Instagram o altri social</string>
+    <string name="open">Apri</string>
+    <string name="copy">Copia</string>
+    <string name="home_status">Condividi un link da un social oppure incollalo in alto.</string>
+    <string name="save_media">↓ Salva foto/video</string>
+    <string name="screenshot">▣ Screenshot</string>
+    <string name="save_original_video">↓ Recupera VIDEO originale</string>
+    <string name="cancel">✕ Annulla operazione</string>
+    <string name="cancelled">Operazione annullata. Nessun download attivo.</string>
+    <string name="nothing_running">Nessuna operazione in corso.</string>
+</resources>

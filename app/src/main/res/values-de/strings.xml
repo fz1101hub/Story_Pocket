@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Fotos und Videos aus sozialen Netzwerken speichern</string>
+    <string name="link_hint">Link von Instagram oder einem anderen Netzwerk einfügen</string>
+    <string name="open">Öffnen</string>
+    <string name="copy">Kopieren</string>
+    <string name="home_status">Teile einen Social-Media-Link oder füge ihn oben ein.</string>
+    <string name="save_media">↓ Foto/Video speichern</string>
+    <string name="screenshot">▣ Screenshot</string>
+    <string name="save_original_video">↓ Original-VIDEO abrufen</string>
+    <string name="cancel">✕ Vorgang abbrechen</string>
+    <string name="cancelled">Vorgang abgebrochen. Kein aktiver Download.</string>
+    <string name="nothing_running">Kein Vorgang aktiv.</string>
+</resources>

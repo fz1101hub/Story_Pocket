@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Guarda fotos y vídeos de tus redes sociales</string>
+    <string name="link_hint">Pega un enlace de Instagram u otra red social</string>
+    <string name="open">Abrir</string>
+    <string name="copy">Copiar</string>
+    <string name="home_status">Comparte un enlace social o pégalo arriba.</string>
+    <string name="save_media">↓ Guardar foto/vídeo</string>
+    <string name="screenshot">▣ Captura de pantalla</string>
+    <string name="save_original_video">↓ Obtener VÍDEO original</string>
+    <string name="cancel">✕ Cancelar operación</string>
+    <string name="cancelled">Operación cancelada. No hay descargas activas.</string>
+    <string name="nothing_running">No hay ninguna operación en curso.</string>
+</resources>

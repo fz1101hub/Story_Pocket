@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Enregistrez des photos et vidéos de vos réseaux sociaux</string>
+    <string name="link_hint">Collez un lien Instagram ou d’un autre réseau social</string>
+    <string name="open">Ouvrir</string>
+    <string name="copy">Copier</string>
+    <string name="home_status">Partagez un lien social ou collez-le ci-dessus.</string>
+    <string name="save_media">↓ Enregistrer photo/vidéo</string>
+    <string name="screenshot">▣ Capture d’écran</string>
+    <string name="save_original_video">↓ Récupérer la VIDÉO originale</string>
+    <string name="cancel">✕ Annuler l’opération</string>
+    <string name="cancelled">Opération annulée. Aucun téléchargement actif.</string>
+    <string name="nothing_running">Aucune opération en cours.</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Save photos and videos from your social networks</string>
+    <string name="link_hint">Paste a link from Instagram or another social network</string>
+    <string name="open">Open</string>
+    <string name="copy">Copy</string>
+    <string name="home_status">Share a social link or paste it above.</string>
+    <string name="save_media">↓ Save photo/video</string>
+    <string name="screenshot">▣ Screenshot</string>
+    <string name="save_original_video">↓ Get original VIDEO</string>
+    <string name="cancel">✕ Cancel operation</string>
+    <string name="cancelled">Operation cancelled. No active download.</string>
+    <string name="nothing_running">No operation in progress.</string>
+</resources>
