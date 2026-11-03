@@ -87,6 +87,19 @@ def main():
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_feedback)} hardcoded status/toast messages")
     print("Android: no literal status/toast messages")
     check("iOS", ios, IOS_PLACEHOLDER)
+    # Verify explicit NSLocalizedString keys in the app and share extension.
+    swift_sources = [
+        ROOT / "ios/Sources/App/HomeView.swift",
+        ROOT / "ios/Sources/Extension/ShareViewController.swift",
+    ]
+    swift_keys = set()
+    for source in swift_sources:
+        swift = source.read_text(encoding="utf-8")
+        swift_keys.update(re.findall(r'NSLocalizedString\\s*\\(\\s*"([^"]+)"', swift))
+    missing_ios = sorted(swift_keys - ios["it"].keys())
+    if missing_ios:
+        raise ValueError(f"iOS: undefined NSLocalizedString keys {missing_ios}")
+    print(f"iOS: {len(swift_keys)} explicit NSLocalizedString keys resolved")
     print("Localization parity checks passed.")
 
 if __name__ == "__main__":
