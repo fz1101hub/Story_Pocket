@@ -1,0 +1,56 @@
+name: Restore complete StoryPocket sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-complete-sources.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    if: github.repository == 'fz1101hub/Story_Pocket'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+
+      - name: Scarica l'archivio dei sorgenti verificati
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_URL="https://sb-3ycn1j5j8pe4.vercel.run/source.zip"
+          ARCHIVE="$RUNNER_TEMP/StoryPocket-source.zip"
+          curl --fail --location --retry 3 --connect-timeout 10 --max-time 90 -o "$ARCHIVE" "$SOURCE_URL"
+          echo "022234957269d2b1d245f4cec03f64f8169dfcc3e2167c1b62a29adeb440b105  $ARCHIVE" | sha256sum -c -
+          unzip -t "$ARCHIVE" | tail -2
+          mkdir -p "$RUNNER_TEMP/StoryPocket-src"
+          unzip -q "$ARCHIVE" -d "$RUNNER_TEMP/StoryPocket-src"
+
+      - name: Sostituisci i file troncati e registra il ripristino
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE="$RUNNER_TEMP/StoryPocket-src"
+          test -s "$SOURCE/app/src/main/java/com/storypocket/mobile/MainActivity.java"
+          test "$(wc -c < "$SOURCE/app/src/main/java/com/storypocket/mobile/MainActivity.java")" -gt 70000
+          mkdir -p app/src tests
+          cp -a "$SOURCE/app/src/." app/src/
+          cp -a "$SOURCE/tests/." tests/
+          cp "$SOURCE/app/build.gradle" app/build.gradle
+          cp "$SOURCE/build.gradle" build.gradle
+          cp "$SOURCE/settings.gradle" settings.gradle
+          cp "$SOURCE/gradle.properties" gradle.properties
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src tests app/build.gradle build.gradle settings.gradle gradle.properties
+          if git diff --cached --quiet; then
+            echo "I sorgenti sono già completi"
+          else
+            git commit -m "fix: restore full Android source files from verified archive"
+            git push origin HEAD:main
+          fi
