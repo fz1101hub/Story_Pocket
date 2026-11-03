@@ -18,6 +18,8 @@ enum MediaFilePolicy {
     static func hasContent(_ file: URL) -> Bool {
         guard file.isFileURL, isSupported(file),
               let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
+              let kind = attributes[.type] as? FileAttributeType,
+              kind == .typeRegular,
               let bytes = attributes[.size] as? NSNumber,
               bytes.int64Value > 0 else { return false }
         return true
