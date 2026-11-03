@@ -76,13 +76,13 @@ def main():
     check("Android", android, ANDROID_PLACEHOLDER)
     # Detect Android Java references that have no resource in the default locale.
     activity = (ROOT / "app/src/main/java/com/storypocket/mobile/MainActivity.java").read_text(encoding="utf-8")
-    referenced = set(re.findall(r"\\bR\\.string\\.([A-Za-z_][A-Za-z_0-9]*)", activity))
+    referenced = set(re.findall(r"\bR\.string\.([A-Za-z_][A-Za-z_0-9]*)", activity))
     undefined = sorted(referenced - android["it"].keys())
     if undefined:
         raise ValueError(f"Android/MainActivity.java: undefined string resources {undefined}")
     print(f"Android: {len(referenced)} MainActivity string references resolved")
     # Prevent regressions to literal Italian messages in the two main feedback helpers.
-    hardcoded_feedback = re.findall(r'\\b(?:status|toast)\\s*\\(\\s*"', activity)
+    hardcoded_feedback = re.findall(r'\b(?:status|toast)\s*\(\s*"', activity)
     if hardcoded_feedback:
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_feedback)} hardcoded status/toast messages")
     print("Android: no literal status/toast messages")
@@ -95,7 +95,7 @@ def main():
     swift_keys = set()
     for source in swift_sources:
         swift = source.read_text(encoding="utf-8")
-        swift_keys.update(re.findall(r'NSLocalizedString\\s*\\(\\s*"([^"]+)"', swift))
+        swift_keys.update(re.findall(r'NSLocalizedString\s*\(\s*"([^"]+)"', swift))
     missing_ios = sorted(swift_keys - ios["it"].keys())
     if missing_ios:
         raise ValueError(f"iOS: undefined NSLocalizedString keys {missing_ios}")
