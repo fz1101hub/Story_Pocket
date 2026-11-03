@@ -1,0 +1,33 @@
+import Foundation
+
+@main
+struct MediaFilePolicyCheck {
+    static func main() throws {
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("storypocket-media-policy-" + UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        for ext in ["jpg", "jpeg", "png", "heic", "heif", "gif", "mov", "mp4", "m4v", "MP4"] {
+            let file = directory.appendingPathComponent("sample." + ext)
+            precondition(MediaFilePolicy.isSupported(file), "Unsupported media extension: " + ext)
+            precondition(!MediaFilePolicy.hasContent(file), "Missing file accepted: " + ext)
+            try Data().write(to: file)
+            precondition(!MediaFilePolicy.hasContent(file), "Empty file accepted: " + ext)
+            try Data([0x01]).write(to: file)
+            precondition(MediaFilePolicy.hasContent(file), "Nonempty media rejected: " + ext)
+        }
+
+        for ext in ["txt", "html", "svg", "exe", "pdf", "zip"] {
+            let file = directory.appendingPathComponent("sample." + ext)
+            try Data([0x01]).write(to: file)
+            precondition(!MediaFilePolicy.isSupported(file), "Unexpected extension: " + ext)
+            precondition(!MediaFilePolicy.hasContent(file), "Unsupported media accepted: " + ext)
+        }
+
+        precondition(MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.MP4")))
+        precondition(!MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.jpg")))
+        precondition(!MediaFilePolicy.hasContent(URL(string: "https://example.org/video.mp4")!))
+        print("MediaFilePolicy checks passed")
+    }
+}
