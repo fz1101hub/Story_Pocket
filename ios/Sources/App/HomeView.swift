@@ -95,6 +95,11 @@ struct HomeView: View {
                     let temp = FileManager.default.temporaryDirectory
                         .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
                     do {
+                        guard MediaFilePolicy.isSupported(url) else {
+                            if access { url.stopAccessingSecurityScopedResource() }
+                            status = NSLocalizedString("status.import_failed", comment: "")
+                            return
+                        }
                         try FileManager.default.copyItem(at: url, to: temp)
                         if access { url.stopAccessingSecurityScopedResource() }
                         isSaving = true
@@ -127,12 +132,11 @@ enum PhotoSaver {
         // Validate and decode before requesting permission or creating an asset.
         // Otherwise PhotoKit can report success after a no-op change block.
         // Never ask for Photos permission for a missing or empty attachment.
-        guard let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
-              let bytes = attributes[.size] as? NSNumber, bytes.int64Value > 0 else {
+        guard MediaFilePolicy.hasContent(file) else {
             completion(false)
             return
         }
-        let isVideo = ["mov", "mp4", "m4v"].contains(file.pathExtension.lowercased())
+        let isVideo = MediaFilePolicy.isVideo(file)
         let image = isVideo ? nil : UIImage(contentsOfFile: file.path)
         guard isVideo || image != nil else {
             completion(false)
