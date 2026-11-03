@@ -86,6 +86,11 @@ def main():
     if hardcoded_feedback:
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_feedback)} hardcoded status/toast messages")
     print("Android: no literal status/toast messages")
+    # Automatic scan failures are also shown to the user and must be localized.
+    hardcoded_scan = re.findall(r'\bautoScanFailed\s*\([^;]*"[^"]+"', activity)
+    if hardcoded_scan:
+        raise ValueError(f"Android/MainActivity.java: {len(hardcoded_scan)} hardcoded automatic scan failures")
+    print("Android: no literal automatic scan failure messages")
     check("iOS", ios, IOS_PLACEHOLDER)
     # System permission prompts live in InfoPlist.strings, not Localizable.strings.
     ios_privacy = {
