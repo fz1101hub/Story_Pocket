@@ -37,4 +37,8 @@
     <string name="shared_media_saving">Archivo multimedia recibido: guardando en Download/StoryPocket…</string>
     <string name="shared_content_invalid">No se encontró ningún enlace social ni archivo multimedia válido en el contenido compartido.</string>
     <string name="share_https_or_media">Comparte un enlace HTTPS de una red social o un archivo de foto/vídeo.</string>
+    <string name="auto_search_started">Enlace recibido. Búsqueda automática: máximo 25 segundos…</string>
+    <string name="profile_link_received">Enlace de perfil recibido. Abre una publicación, un Reel o una Story y pulsa Guardar.</string>
+    <string name="auto_save_busy">Ya hay otro guardado en curso. Operación automática detenida.</string>
+    <string name="auto_page_mismatch">La página no coincide con el enlace compartido: búsqueda automática detenida.</string>
 </resources>
