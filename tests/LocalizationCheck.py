@@ -120,7 +120,7 @@ def main():
     # SwiftUI uses LocalizedStringKey implicitly in these literal UI initializers.
     # Check them as well; NSLocalizedString-only scans miss missing UI translations.
     implicit_pattern = re.compile(
-        r'\\b(?:Text|TextField|Button|Label|navigationTitle)\\s*\\(\\s*"([^"]+)"'
+        r'\b(?:Text|TextField|Button|Label|navigationTitle)\s*\(\s*"([^"]+)"'
     )
     for source in swift_sources:
         swift = source.read_text(encoding="utf-8")
