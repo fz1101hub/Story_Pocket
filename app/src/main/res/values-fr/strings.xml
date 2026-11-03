@@ -114,4 +114,14 @@
     <string name="shared_file_too_large">Fichier trop volumineux (plus de 120 Mo).</string>
     <string name="download_progress">%1$d Ko téléchargés…</string>
     <string name="download_progress_total">%1$d Ko sur %2$d Ko téléchargés…</string>
+    <string name="video_original_unavailable">La source disponible n’est pas une vidéo originale complète.</string>
+    <string name="video_cdn_unsupported">Instagram utilise un format ou un CDN non pris en charge.</string>
+    <string name="download_cancelled">Téléchargement annulé.</string>
+    <string name="download_timeout">Délai de téléchargement dépassé.</string>
+    <string name="media_host_untrusted">Hôte du média non fiable.</string>
+    <string name="too_many_redirects">Trop de redirections.</string>
+    <string name="partial_media_response">Le réseau social n’a envoyé qu’un segment (HTTP 206), pas le fichier complet.</string>
+    <string name="media_http_error">Le réseau social/CDN a répondu avec HTTP %1$d.</string>
+    <string name="media_over_limit">Le média dépasse la limite de 120 Mo.</string>
+    <string name="media_stream_over_limit">Le média dépasse 120 Mo.</string>
 </resources>
