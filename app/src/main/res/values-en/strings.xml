@@ -124,4 +124,5 @@
     <string name="media_http_error">The social site/CDN responded with HTTP %1$d.</string>
     <string name="media_over_limit">The media exceeds the 120 MB limit.</string>
     <string name="media_stream_over_limit">The media exceeds 120 MB.</string>
+    <string name="clipboard_link_label">StoryPocket link</string>
 </resources>
