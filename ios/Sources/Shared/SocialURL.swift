@@ -12,7 +12,11 @@ enum SocialURL {
     ]
 
     static func normalize(_ input: String) -> URL? {
-        guard let components = URLComponents(string: input.trimmingCharacters(in: .whitespacesAndNewlines)),
+        let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        // URLComponents silently percent-encodes embedded whitespace and control characters.
+        guard trimmed.rangeOfCharacter(from: .whitespacesAndNewlines) == nil,
+              trimmed.rangeOfCharacter(from: .controlCharacters) == nil else { return nil }
+        guard let components = URLComponents(string: trimmed),
               components.scheme?.lowercased() == "https",
               components.user == nil, components.password == nil,
               (components.port == nil || components.port == 443),
