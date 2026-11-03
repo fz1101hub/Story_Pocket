@@ -81,6 +81,11 @@ def main():
     if undefined:
         raise ValueError(f"Android/MainActivity.java: undefined string resources {undefined}")
     print(f"Android: {len(referenced)} MainActivity string references resolved")
+    # Prevent regressions to literal Italian messages in the two main feedback helpers.
+    hardcoded_feedback = re.findall(r'\\b(?:status|toast)\\s*\\(\\s*"', activity)
+    if hardcoded_feedback:
+        raise ValueError(f"Android/MainActivity.java: {len(hardcoded_feedback)} hardcoded status/toast messages")
+    print("Android: no literal status/toast messages")
     check("iOS", ios, IOS_PLACEHOLDER)
     print("Localization parity checks passed.")
 
