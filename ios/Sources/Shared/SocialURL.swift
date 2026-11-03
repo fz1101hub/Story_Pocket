@@ -16,6 +16,7 @@ enum SocialURL {
               components.scheme?.lowercased() == "https",
               components.user == nil, components.password == nil,
               (components.port == nil || components.port == 443),
+              components.fragment == nil,
               let host = components.host?.lowercased(),
               hosts.contains(where: { host == $0 || host.hasSuffix("." + $0) }),
               let url = components.url else { return nil }
