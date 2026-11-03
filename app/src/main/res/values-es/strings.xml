@@ -117,7 +117,6 @@
     <string name="video_original_unavailable">La fuente disponible no es un archivo de vídeo original completo.</string>
     <string name="video_cdn_unsupported">Instagram utiliza un formato o CDN no compatible.</string>
     <string name="download_cancelled">Descarga cancelada.</string>
-    <string name="download_timeout">Se agotó el tiempo de descarga.</string>
     <string name="media_host_untrusted">Servidor multimedia no fiable.</string>
     <string name="too_many_redirects">Demasiadas redirecciones.</string>
     <string name="partial_media_response">La red social envió solo un segmento (HTTP 206), no el archivo completo.</string>
