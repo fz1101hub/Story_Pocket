@@ -19,10 +19,10 @@ struct SocialURLCheck {
         expect("https://instagram.com:8080/post", nil)
         expect("A link (https://www.instagram.com/p/abc).", "https://www.instagram.com/p/abc")
         func expectIncoming(_ input: String, _ expected: String?) {
-            guard let url = URL(string: input) else { fatalError("Invalid test URL: \\(input)") }
+            guard let url = URL(string: input) else { fatalError("Invalid test URL: \(input)") }
             let actual = SocialURL.incoming(url)?.absoluteString
             guard actual == expected else {
-                fatalError("Unexpected incoming URL for \\(input): \\(actual ?? "nil")")
+                fatalError("Unexpected incoming URL for \(input): \(actual ?? "nil")")
             }
         }
         expectIncoming("https://www.instagram.com/reel/abc", "https://www.instagram.com/reel/abc")
