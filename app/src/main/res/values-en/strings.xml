@@ -19,4 +19,10 @@
     <string name="info_title">StoryPocket · How it works</string>
     <string name="info_body">Open a social app and choose Share → StoryPocket. You can also paste a link or share a photo/video file. Direct downloads are not always available and some platforms impose restrictions. Files are saved in Download/StoryPocket. This app is not affiliated with social platforms. Save only content you are entitled to keep.</string>
     <string name="understood">Got it</string>
+    <string name="auto_timeout">Search finished: Instagram did not provide the file within 25 seconds.</string>
+    <string name="auto_unavailable">Download unavailable. Try saving manually or taking a screenshot.</string>
+    <string name="blocked_app_redirect">The social network tried to open another app: redirect blocked. The video must load here before it can be downloaded.</string>
+    <string name="blocked_external_link">External link blocked. Use Copy to open it separately.</string>
+    <string name="blocked_link_type">Unsupported link type: navigation blocked.</string>
+    <string name="page_load_failed">The social page could not be loaded. Check your connection and sign-in.</string>
 </resources>
