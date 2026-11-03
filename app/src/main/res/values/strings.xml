@@ -114,4 +114,14 @@
     <string name="shared_file_too_large">File troppo grande (oltre 120 MB).</string>
     <string name="download_progress">Scaricati %1$d KB…</string>
     <string name="download_progress_total">Scaricati %1$d di %2$d KB…</string>
+    <string name="video_original_unavailable">La sorgente disponibile non è un file video originale completo.</string>
+    <string name="video_cdn_unsupported">Instagram sta usando un formato o CDN non supportato.</string>
+    <string name="download_cancelled">Download annullato.</string>
+    <string name="download_timeout">Tempo massimo di download superato.</string>
+    <string name="media_host_untrusted">Host del media non attendibile.</string>
+    <string name="too_many_redirects">Troppi reindirizzamenti.</string>
+    <string name="partial_media_response">Il social ha inviato solo un segmento (HTTP 206), non il file completo.</string>
+    <string name="media_http_error">Il social/CDN ha risposto con HTTP %1$d.</string>
+    <string name="media_over_limit">Il media supera il limite di 120 MB.</string>
+    <string name="media_stream_over_limit">Il media supera 120 MB.</string>
 </resources>
