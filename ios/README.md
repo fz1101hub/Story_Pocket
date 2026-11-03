@@ -25,7 +25,8 @@ swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift -o /tmp
 
 Both the app and Share Extension accept explicitly selected JPEG, PNG, HEIC/HEIF,
 GIF, MOV, MP4 and M4V files. A shared Foundation-only policy rejects missing,
-empty, unsupported and nonregular files before requesting Photos access. The
+empty, unsupported, oversized (over 120 MiB) and nonregular files before requesting Photos access.
+Both import paths check the source before copying and recheck the copied file. The
 iOS workflow compiles and executes both the URL tests and media policy tests:
 
 ```sh
