@@ -39,10 +39,12 @@ final class ShareViewController: UIViewController {
     private func receive() {
         let providers = (extensionContext?.inputItems as? [NSExtensionItem] ?? [])
             .flatMap { $0.attachments ?? [] }
-        if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.movie.identifier) }) {
-            receiveFile(provider, type: .movie)
-        } else if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.image.identifier) }) {
-            receiveFile(provider, type: .image)
+        if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.movie.identifier) }),
+           let type = preferredMediaType(from: provider, conformingTo: .movie) {
+            receiveFile(provider, type: type)
+        } else if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.image.identifier) }),
+                  let type = preferredMediaType(from: provider, conformingTo: .image) {
+            receiveFile(provider, type: type)
         } else if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.url.identifier) }) {
             provider.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { [weak self] item, _ in
                 self?.receiveLink((item as? URL)?.absoluteString ?? (item as? String) ?? "")
@@ -55,6 +57,17 @@ final class ShareViewController: UIViewController {
         } else {
             message.text = NSLocalizedString("share.unsupported", comment: "")
         }
+    }
+
+    /// Ask for the provider's actual file format, not the abstract image/movie type.
+    /// This preserves .jpg/.png/.heic/.mp4 extensions for Photos validation.
+    private func preferredMediaType(from provider: NSItemProvider, conformingTo category: UTType) -> UTType? {
+        provider.registeredTypeIdentifiers
+            .compactMap(UTType.init)
+            .first(where: { $0.conforms(to: category)
+                && $0.preferredFilenameExtension.map { ext in
+                    MediaFilePolicy.isSupported(URL(fileURLWithPath: "shared." + ext))
+                } == true })
     }
 
     private func receiveLink(_ text: String) {
@@ -81,7 +94,7 @@ final class ShareViewController: UIViewController {
                 }
                 return
             }
-            let ext = temporaryURL.pathExtension.isEmpty ? (type.preferredFilenameExtension ?? "") : temporaryURL.pathExtension
+            let ext = type.preferredFilenameExtension ?? temporaryURL.pathExtension
             let destination = FileManager.default.temporaryDirectory
                 .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             do {
