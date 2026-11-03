@@ -31,4 +31,7 @@
     <string name="shared_content_waiting">Attendo il contenuto condiviso. Se non si apre, usa Copia link.</string>
     <string name="content_opened_save">Contenuto aperto: premi Salva foto/video o Screenshot.</string>
     <string name="share_to_start">Condividi un link o un file da un social per iniziare.</string>
+    <string name="screenshot_saved">Schermata salvata in Download/StoryPocket ✓</string>
+    <string name="screenshot_png_saved">Schermata salvata come PNG.</string>
+    <string name="screenshot_save_failed">Impossibile salvare la schermata.</string>
 </resources>
