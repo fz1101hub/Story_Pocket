@@ -34,4 +34,7 @@
     <string name="screenshot_saved">Schermata salvata in Download/StoryPocket ✓</string>
     <string name="screenshot_png_saved">Schermata salvata come PNG.</string>
     <string name="screenshot_save_failed">Impossibile salvare la schermata.</string>
+    <string name="shared_media_saving">File multimediale ricevuto: salvataggio in Download/StoryPocket…</string>
+    <string name="shared_content_invalid">Nessun link social o file multimediale valido nella condivisione.</string>
+    <string name="share_https_or_media">Condividi un link HTTPS da un social oppure un file foto/video.</string>
 </resources>
