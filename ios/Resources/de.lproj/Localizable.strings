@@ -13,3 +13,11 @@
 "status.saved" = "In Fotos gespeichert.";
 "status.save_failed" = "Speichern fehlgeschlagen.";
 "home.limitations" = "Automatische Social-Media-Downloads sind unter iOS noch nicht verfügbar.";
+"share.loading" = "Geteilten Inhalt vorbereiten…";
+"share.save" = "In Fotos sichern";
+"share.unsupported" = "Geteilter Inhalt wird nicht unterstützt.";
+"share.ready_file" = "Datei zum Speichern bereit.";
+"share.copy_hint" = "Link kopieren, dann StoryPocket öffnen und einfügen.";
+"share.copy" = "Link kopieren";
+"share.copied" = "Link kopiert.";
+"share.saving" = "Wird gespeichert…";

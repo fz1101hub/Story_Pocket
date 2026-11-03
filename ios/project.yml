@@ -26,3 +26,35 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.storypocket.ios
         TARGETED_DEVICE_FAMILY: "1,2"
+    dependencies:
+      - target: StoryPocketShare
+        embed: true
+  StoryPocketShare:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Sources/Extension
+      - path: Sources/Shared
+      - path: Resources
+        buildPhase: resources
+      - path: Sources/App/HomeView.swift
+        buildPhase: none
+    info:
+      path: Sources/Extension/Info.plist
+      properties:
+        CFBundleDisplayName: StoryPocket
+        NSPhotoLibraryAddUsageDescription: "StoryPocket saves media you explicitly choose."
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ShareViewController"
+          NSExtensionAttributes:
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsWebURLWithMaxCount: 1
+              NSExtensionActivationSupportsText: true
+              NSExtensionActivationSupportsImageWithMaxCount: 1
+              NSExtensionActivationSupportsMovieWithMaxCount: 1
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.storypocket.ios.share
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SKIP_INSTALL: YES

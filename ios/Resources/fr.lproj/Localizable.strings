@@ -13,3 +13,11 @@
 "status.saved" = "Enregistré dans Photos.";
 "status.save_failed" = "Échec de l’enregistrement.";
 "home.limitations" = "Le téléchargement automatique depuis les réseaux sociaux n’est pas encore disponible sur iOS.";
+"share.loading" = "Préparation du partage…";
+"share.save" = "Enregistrer dans Photos";
+"share.unsupported" = "Élément partagé non pris en charge.";
+"share.ready_file" = "Fichier prêt à enregistrer.";
+"share.copy_hint" = "Copiez le lien, puis ouvrez StoryPocket et collez-le.";
+"share.copy" = "Copier le lien";
+"share.copied" = "Lien copié.";
+"share.saving" = "Enregistrement…";

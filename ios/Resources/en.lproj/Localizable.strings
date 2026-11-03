@@ -13,3 +13,11 @@
 "status.saved" = "Saved to Photos.";
 "status.save_failed" = "Save failed.";
 "home.limitations" = "Automatic social media downloads are not yet available on iOS.";
+"share.loading" = "Preparing shared item…";
+"share.save" = "Save to Photos";
+"share.unsupported" = "Unsupported shared item.";
+"share.ready_file" = "File ready to save.";
+"share.copy_hint" = "Copy the link, then open StoryPocket and paste it.";
+"share.copy" = "Copy link";
+"share.copied" = "Link copied.";
+"share.saving" = "Saving…";

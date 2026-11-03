@@ -13,3 +13,11 @@
 "status.saved" = "Salvato in Foto.";
 "status.save_failed" = "Salvataggio non riuscito.";
 "home.limitations" = "Il download automatico dai social non è ancora disponibile su iOS.";
+"share.loading" = "Preparazione condivisione…";
+"share.save" = "Salva in Foto";
+"share.unsupported" = "Contenuto non supportato.";
+"share.ready_file" = "File pronto per il salvataggio.";
+"share.copy_hint" = "Copia il link e apri StoryPocket per incollarlo.";
+"share.copy" = "Copia link";
+"share.copied" = "Link copiato.";
+"share.saving" = "Salvataggio in corso…";
