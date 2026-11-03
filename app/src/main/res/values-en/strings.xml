@@ -37,4 +37,8 @@
     <string name="shared_media_saving">Media file received: saving to Download/StoryPocket…</string>
     <string name="shared_content_invalid">No valid social link or media file found in the shared content.</string>
     <string name="share_https_or_media">Share an HTTPS social link or a photo/video file.</string>
+    <string name="auto_search_started">Link received. Automatic search: up to 25 seconds…</string>
+    <string name="profile_link_received">Profile link received. Open a Post, Reel or Story and tap Save.</string>
+    <string name="auto_save_busy">Another save is already in progress. Automatic operation stopped.</string>
+    <string name="auto_page_mismatch">Page differs from the shared link: automatic search stopped.</string>
 </resources>
