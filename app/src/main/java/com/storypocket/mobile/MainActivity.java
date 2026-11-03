@@ -668,16 +668,16 @@ public final class MainActivity extends Activity {
                 PublicSocialResolver.Result result = PublicSocialResolver.resolve(socialPage, videoOnly);
                 if (token != transferGeneration) return;
                 if (result == null) {
-                    finishTransfer(token, platform + ": nessun file diretto accessibile.",
-                        "Il social potrebbe richiedere accesso, limitare le API o usare streaming non scaricabile.");
+                    finishTransfer(token, getString(R.string.public_file_missing, platform),
+                        getString(R.string.public_file_missing_reason));
                     return;
                 }
                 main.post(() -> { if(token==transferGeneration)
                     status(getString(R.string.social_media_type_found, platform, result.mediaType)); });
                 fetchAndSave(result.mediaUrl, result.mediaType, SocialLinks.fileTag(socialPage), userAgent, token);
             } catch (Exception e) {
-                finishTransfer(token, platform + ": recupero non riuscito.",
-                    "Il contenuto pubblico non è disponibile: " + e.getMessage());
+                finishTransfer(token, getString(R.string.public_recovery_failed, platform),
+                    getString(R.string.public_content_unavailable, e.getMessage()));
             }
         });
     }
@@ -1079,16 +1079,15 @@ public final class MainActivity extends Activity {
                     InstagramFirstPartyResolver.resolve(page, cookie, userAgent, videoOnly);
                 if (token != transferGeneration) return;
                 if (found == null) {
-                    finishTransfer(token, "Instagram non ha esposto un file originale recuperabile.",
-                        "Sono stati provati player, richieste, dati del Post/Reel e pagina incorporata. " +
-                        "Per i contenuti pubblici servirà un eventuale resolver esterno con consenso.");
+                    finishTransfer(token, getString(R.string.instagram_original_unavailable),
+                        getString(R.string.instagram_original_unavailable_reason));
                     return;
                 }
                 status(getString(R.string.media_found_by_method, found.method));
                 fetchAndSave(found.mediaUrl, found.mediaType, TargetParser.fileTag(page), userAgent, token);
             } catch (Exception e) {
-                finishTransfer(token, "Ricerca nel servizio Instagram non riuscita.",
-                    "Il servizio può richiedere accesso o bloccare questo metodo: " + e.getMessage());
+                finishTransfer(token, getString(R.string.instagram_service_failed),
+                    getString(R.string.instagram_service_failed_reason, e.getMessage()));
             }
         });
     }
@@ -1110,17 +1109,16 @@ public final class MainActivity extends Activity {
                     InstagramStoryResolver.resolve(page, cookie, userAgent, videoOnly);
                 if (token != transferGeneration) return;
                 if (found == null) {
-                    finishTransfer(token, "Story non scaricabile con i metodi disponibili.",
-                        "Ho controllato player, dati della Story e richiesta Instagram. " +
-                        "Il contenuto potrebbe richiedere un metodo non disponibile o essere scaduto.");
+                    finishTransfer(token, getString(R.string.story_unavailable),
+                        getString(R.string.story_unavailable_reason));
                     return;
                 }
                 main.post(() -> { if (token == transferGeneration) status(
-                    "Story trovata: verifico e salvo il " + found.mediaType + " originale…"); });
+                    getString(R.string.story_original_found, found.mediaType)); });
                 fetchAndSave(found.mediaUrl, found.mediaType, TargetParser.fileTag(page), userAgent, token);
             } catch (Exception e) {
-                finishTransfer(token, "Ricerca originale della Story non riuscita.",
-                    "Instagram potrebbe bloccare la richiesta: " + e.getMessage());
+                finishTransfer(token, getString(R.string.story_original_failed),
+                    getString(R.string.story_original_failed_reason, e.getMessage()));
             }
         });
     }
@@ -1256,9 +1254,9 @@ public final class MainActivity extends Activity {
             ensureActive(token, transferGeneration, deadline);
             publishDownload(pending);
             pending = null;
-            finishTransfer(token, "Salvato in Download/StoryPocket ✓", "Media salvato correttamente.");
+            finishTransfer(token, getString(R.string.media_saved_location), getString(R.string.media_saved_success));
         } catch (Exception e) {
-            finishTransfer(token, "Media non disponibile: nessun file salvato.", e.getMessage());
+            finishTransfer(token, getString(R.string.media_save_unavailable), e.getMessage());
         } finally {
             if (pending != null) getContentResolver().delete(pending, null, null);
             if (conn != null) conn.disconnect();
@@ -1306,9 +1304,9 @@ public final class MainActivity extends Activity {
             ensureActive(token, transferGeneration, deadline);
             publishDownload(pending);
             pending = null;
-            finishTransfer(token, "File condiviso salvato in Download/StoryPocket ✓", "File condiviso salvato.");
+            finishTransfer(token, getString(R.string.shared_file_saved_location), getString(R.string.shared_file_saved_success));
         } catch (Exception error) {
-            finishTransfer(token, "Non è stato possibile salvare il file condiviso.", error.getMessage());
+            finishTransfer(token, getString(R.string.shared_file_save_failed), error.getMessage());
         } finally {
             if (pending != null) getContentResolver().delete(pending, null, null);
         }
