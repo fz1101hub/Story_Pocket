@@ -5,6 +5,7 @@ import Foundation
 enum MediaFilePolicy {
     private static let images: Set<String> = ["jpg", "jpeg", "png", "heic", "heif", "gif"]
     private static let videos: Set<String> = ["mov", "mp4", "m4v"]
+    static let maximumFileBytes: Int64 = 120 * 1024 * 1024
 
     static func isVideo(_ file: URL) -> Bool {
         videos.contains(file.pathExtension.lowercased())
@@ -21,7 +22,8 @@ enum MediaFilePolicy {
               let kind = attributes[.type] as? FileAttributeType,
               kind == .typeRegular,
               let bytes = attributes[.size] as? NSNumber,
-              bytes.int64Value > 0 else { return false }
+              bytes.int64Value > 0,
+              bytes.int64Value <= maximumFileBytes else { return false }
         return true
     }
 }
