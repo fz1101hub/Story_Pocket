@@ -59,6 +59,12 @@ struct SocialURLCheck {
         expectBrowser("file:///private/tmp/test.jpg", false)
         expectBrowser("about:blank", true)
         expectBrowser("about:srcdoc", false)
+        expectBrowser("data:text/html,hello", false)
+        expectBrowser("blob:https://instagram.com/id", false)
+        expectBrowser("https://example.org:444/", false)
+        expectBrowser("https://example.org:443/", true)
+        expectBrowser("https://user@example.org/", false)
+        expectBrowser("https://example.org/#fragment", true)
         print("SocialURL checks passed")
     }
 }
