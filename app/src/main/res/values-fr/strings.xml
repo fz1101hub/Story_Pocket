@@ -45,4 +45,21 @@
     <string name="open_instagram_page">Ouvrez une page Instagram dans le navigateur StoryPocket.</string>
     <string name="media_found_saving">Contenu trouvé : tentative d’enregistrement…</string>
     <string name="invalid_media_link">Le lien du média est invalide.</string>
+    <string name="identify_visible_media">Identification de la publication, du Reel ou de la Story visible…</string>
+    <string name="instagram_no_response">Instagram ne répond pas : ouvrez le contenu et réessayez.</string>
+    <string name="search_visible_media">Recherche du média visible (6 secondes maximum)…</string>
+    <string name="player_timeout">Le lecteur ne répond pas après 6 secondes. Réessayez ou faites une capture.</string>
+    <string name="story_page_changed">La page a changé : recommencez depuis la Story souhaitée.</string>
+    <string name="auto_download_started">Média trouvé : téléchargement automatique en cours…</string>
+    <string name="direct_download_unavailable">Ce contenu ne permet pas de téléchargement direct.</string>
+    <string name="instagram_metadata_fallback">Aucun MP4 du lecteur : recherche des métadonnées originales du Reel ou de la publication…</string>
+    <string name="story_changed">La Story a changé : rouvrez celle que vous souhaitez enregistrer.</string>
+    <string name="story_metadata_search">Story identifiée : recherche des données Instagram originales (pas la couverture)…</string>
+    <string name="download_timeout">Téléchargement interrompu : délai de 45 secondes dépassé.</string>
+    <string name="instagram_download_timeout">Délai dépassé : Instagram n’a pas terminé le téléchargement.</string>
+    <string name="open_social_to_capture">Ouvrez un contenu social à capturer.</string>
+    <string name="story_not_ready">La Story n’est pas encore prête.</string>
+    <string name="capturing_screen">Capture de l’écran visible…</string>
+    <string name="screen_capture_failed">Échec de la capture d’écran.</string>
+    <string name="capture_not_allowed">Cet appareil ou ce lecteur ne permet pas cette capture.</string>
 </resources>
