@@ -99,4 +99,17 @@
     <string name="content_not_open">Content is not open</string>
     <string name="waiting_photo_or_video_cover">Waiting to distinguish a photo from a video thumbnail</string>
     <string name="screenshot_photos_only_hint">Try Screenshot only for photos.</string>
+    <string name="player_no_result">No result from the player.</string>
+    <string name="download_create_failed">Could not create the file in Downloads.</string>
+    <string name="download_open_failed">Could not open the file in Downloads.</string>
+    <string name="download_empty_media">The downloaded media is empty.</string>
+    <string name="download_incomplete">Incomplete download. Please try again.</string>
+    <string name="shared_unsupported_media">The shared file is not supported media.</string>
+    <string name="shared_destination_failed">Could not open the destination file.</string>
+    <string name="shared_empty_file">The shared file is empty.</string>
+    <string name="screenshot_create_failed">Could not create the screenshot.</string>
+    <string name="screenshot_png_failed">Could not write the PNG image.</string>
+    <string name="download_wrong_media_type">The social site returned a different media type (possibly a thumbnail).</string>
+    <string name="download_invalid_response">The server returned a page or invalid file.</string>
+    <string name="shared_file_too_large">File too large (over 120 MB).</string>
 </resources>
