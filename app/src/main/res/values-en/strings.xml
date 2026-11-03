@@ -74,4 +74,23 @@
     <string name="social_direct_unavailable">%1$s: link recognized, but direct download is unavailable. Share the original file or use Screenshot.</string>
     <string name="social_public_file_search">%1$s: searching for an available public file…</string>
     <string name="social_media_type_found">%1$s: %2$s file detected; checking and saving…</string>
+    <string name="public_file_missing">%1$s: no directly accessible file.</string>
+    <string name="public_file_missing_reason">The platform may require sign-in, restrict APIs or use non-downloadable streaming.</string>
+    <string name="public_recovery_failed">%1$s: retrieval failed.</string>
+    <string name="public_content_unavailable">Public content unavailable: %1$s</string>
+    <string name="instagram_original_unavailable">Instagram did not provide a retrievable original file.</string>
+    <string name="instagram_original_unavailable_reason">Tried player, requests, Post/Reel data and embedded page. Public content may require an external resolver with your consent.</string>
+    <string name="instagram_service_failed">Instagram service lookup failed.</string>
+    <string name="instagram_service_failed_reason">The service may require sign-in or block this method: %1$s</string>
+    <string name="story_unavailable">Story cannot be downloaded using available methods.</string>
+    <string name="story_unavailable_reason">Checked player, Story data and Instagram request. The content may have expired or require an unavailable method.</string>
+    <string name="story_original_found">Story found: checking and saving the original %1$s…</string>
+    <string name="story_original_failed">Original Story lookup failed.</string>
+    <string name="story_original_failed_reason">Instagram may block the request: %1$s</string>
+    <string name="media_saved_location">Saved to Download/StoryPocket ✓</string>
+    <string name="media_saved_success">Media saved successfully.</string>
+    <string name="media_save_unavailable">Media unavailable: no file saved.</string>
+    <string name="shared_file_saved_location">Shared file saved to Download/StoryPocket ✓</string>
+    <string name="shared_file_saved_success">Shared file saved.</string>
+    <string name="shared_file_save_failed">Could not save the shared file.</string>
 </resources>
