@@ -122,6 +122,11 @@ def main():
     implicit_pattern = re.compile(
         r'\b(?:Text|TextField|Button|Label|navigationTitle)\s*\(\s*"([^"]+)"'
     )
+    # Guard the scanner itself: an over-escaped regex silently misses SwiftUI keys.
+    if implicit_pattern.findall('Text("home.subtitle") Button("home.open")') != [
+        "home.subtitle", "home.open"
+    ]:
+        raise ValueError("iOS: SwiftUI implicit localization scanner is broken")
     for source in swift_sources:
         swift = source.read_text(encoding="utf-8")
         swift_keys.update(implicit_pattern.findall(swift))
