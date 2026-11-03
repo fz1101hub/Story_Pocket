@@ -85,6 +85,13 @@ final class ShareViewController: UIViewController {
             let destination = FileManager.default.temporaryDirectory
                 .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             do {
+                guard MediaFilePolicy.isSupported(destination) else {
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self, !self.isClosing else { return }
+                        self.message.text = NSLocalizedString("share.unsupported", comment: "")
+                    }
+                    return
+                }
                 try FileManager.default.copyItem(at: temporaryURL, to: destination)
                 DispatchQueue.main.async { [weak self] in
                     guard let self, !self.isClosing else {
@@ -146,19 +153,12 @@ final class ShareViewController: UIViewController {
 
 private enum ExtensionPhotoSaver {
     static func save(_ file: URL, completion: @escaping (Bool) -> Void) {
-        let ext = file.pathExtension.lowercased()
-        guard ["jpg", "jpeg", "png", "heic", "heif", "gif", "mov", "mp4", "m4v"].contains(ext) else {
+        // Validate supported nonempty media before requesting Photos access.
+        guard MediaFilePolicy.hasContent(file) else {
             completion(false)
             return
         }
-        // Reject corrupt/undecodable images before entering a PhotoKit change block.
-        // Never ask for Photos permission for a missing or empty attachment.
-        guard let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
-              let bytes = attributes[.size] as? NSNumber, bytes.int64Value > 0 else {
-            completion(false)
-            return
-        }
-        let isVideo = ["mov", "mp4", "m4v"].contains(ext)
+        let isVideo = MediaFilePolicy.isVideo(file)
         let image = isVideo ? nil : UIImage(contentsOfFile: file.path)
         guard isVideo || image != nil else {
             completion(false)
