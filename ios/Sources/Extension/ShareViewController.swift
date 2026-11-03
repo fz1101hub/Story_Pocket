@@ -151,6 +151,12 @@ private enum ExtensionPhotoSaver {
             return
         }
         // Reject corrupt/undecodable images before entering a PhotoKit change block.
+        // Never ask for Photos permission for a missing or empty attachment.
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
+              let bytes = attributes[.size] as? NSNumber, bytes.int64Value > 0 else {
+            completion(false)
+            return
+        }
         let isVideo = ["mov", "mp4", "m4v"].contains(ext)
         let image = isVideo ? nil : UIImage(contentsOfFile: file.path)
         guard isVideo || image != nil else {
