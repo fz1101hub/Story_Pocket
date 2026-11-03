@@ -25,6 +25,10 @@ struct MediaFilePolicyCheck {
             precondition(!MediaFilePolicy.hasContent(file), "Unsupported media accepted: " + ext)
         }
 
+        let fakeImageDirectory = directory.appendingPathComponent("folder.jpg")
+        try FileManager.default.createDirectory(at: fakeImageDirectory, withIntermediateDirectories: false)
+        precondition(!MediaFilePolicy.hasContent(fakeImageDirectory), "Directory accepted as media")
+
         precondition(MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.MP4")))
         precondition(!MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.jpg")))
         precondition(!MediaFilePolicy.hasContent(URL(string: "https://example.org/video.mp4")!))
