@@ -49,7 +49,8 @@ final class ShareViewController: UIViewController {
             }
         } else if let provider = providers.first(where: { $0.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) }) {
             provider.loadItem(forTypeIdentifier: UTType.plainText.identifier, options: nil) { [weak self] item, _ in
-                self?.receiveLink(item as? String ?? "")
+                let text = (item as? String) ?? (item as? NSAttributedString)?.string ?? ""
+                self?.receiveLink(text)
             }
         } else {
             message.text = NSLocalizedString("share.unsupported", comment: "")
