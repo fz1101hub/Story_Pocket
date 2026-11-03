@@ -7,6 +7,7 @@ struct HomeView: View {
     @State private var link = ""
     @State private var selectedURL: URL?
     @State private var importing = false
+    @State private var isSaving = false
     @State private var status = ""
 
     private let gradient = LinearGradient(
@@ -53,6 +54,7 @@ struct HomeView: View {
                     Text("home.import_hint").foregroundStyle(.secondary)
                     Button("home.import_button") { importing = true }
                         .buttonStyle(.borderedProminent)
+                        .disabled(isSaving)
 
                     Text("home.limitations").font(.footnote).foregroundStyle(.secondary)
                     if !status.isEmpty { Text(status).font(.callout) }
@@ -81,9 +83,12 @@ struct HomeView: View {
                     do {
                         try FileManager.default.copyItem(at: url, to: temp)
                         if access { url.stopAccessingSecurityScopedResource() }
+                        isSaving = true
+                        status = NSLocalizedString("share.saving", comment: "")
                         PhotoSaver.save(temp) { success in
                             DispatchQueue.main.async {
                                 try? FileManager.default.removeItem(at: temp)
+                                isSaving = false
                                 status = NSLocalizedString(success ? "status.saved" : "status.save_failed", comment: "")
                             }
                         }
