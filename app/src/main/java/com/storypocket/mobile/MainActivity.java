@@ -237,7 +237,7 @@ public final class MainActivity extends Activity {
         inputRow.addView(copy, copyParams);
         copy.setOnClickListener(v -> copyCurrentLink());
 
-        sourceNotice = text("Instagram · TikTok · Pinterest · Reddit · Bluesky · altri", 11, Color.WHITE, false);
+        sourceNotice = text(getString(R.string.social_platforms), 11, Color.WHITE, false);
         TextView notice = sourceNotice;
         LinearLayout.LayoutParams noteParams = new LinearLayout.LayoutParams(-1, dp(29));
         noteParams.topMargin = dp(2);
@@ -597,7 +597,7 @@ public final class MainActivity extends Activity {
             String target = SocialLinks.normalize(profileInput.getText().toString());
             setSourceNotice(target);
             browser.loadUrl(target);
-            status("Caricamento in corso…");
+            status(getString(R.string.loading));
         } catch (IllegalArgumentException e) {
             toast(e.getMessage());
         }
@@ -617,15 +617,15 @@ public final class MainActivity extends Activity {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard == null) throw new IllegalStateException("Appunti non disponibili");
             clipboard.setPrimaryClip(ClipData.newPlainText("Link StoryPocket", normalized));
-            toast("Link copiato negli appunti.");
+            toast(getString(R.string.link_copied));
         } catch (Exception e) {
-            toast("Apri o incolla prima un link social valido.");
+            toast(getString(R.string.invalid_link_first));
         }
     }
 
     private void setSourceNotice(String url) {
         String p = SocialLinks.platform(url);
-        if (p != null && sourceNotice != null) sourceNotice.setText("✓ " + p + " rilevato  ·  Condividi → StoryPocket");
+        if (p != null && sourceNotice != null) sourceNotice.setText(getString(R.string.platform_detected, p));
     }
 
     private void status(String message) { main.post(() -> statusText.setText(message)); }
@@ -647,17 +647,9 @@ public final class MainActivity extends Activity {
 
     private void showInfo() {
         new AlertDialog.Builder(this)
-            .setTitle("StoryPocket · Come funziona")
-            .setMessage("Apri un social, tocca Condividi e seleziona StoryPocket. "
-                + "Puoi anche incollare un link oppure condividere direttamente un file foto/video. "
-                + "Instagram conserva i metodi di recupero di Stories, Reel e Post. "
-                + "Per Bluesky, Mastodon e Reddit provo anche dati pubblici direttamente dalle rispettive API, senza inviare cookie o password. "
-                + "Per altri social puoi aprire il contenuto, acquisire la schermata e salvare file multimediali condivisi; "
-                + "il download diretto non è sempre disponibile. Alcuni video Reddit possono essere senza audio. "
-                + "YouTube e TikTok hanno limitazioni specifiche sui download; non vengono aggirate. "
-                + "I file vengono salvati in Download/StoryPocket. L'app non è affiliata alle piattaforme social. "
-                + "Scarica soltanto contenuti che puoi legittimamente conservare.")
-            .setPositiveButton("Ho capito", (d, w) -> d.dismiss()).show();
+            .setTitle(getString(R.string.info_title))
+            .setMessage(getString(R.string.info_body))
+            .setPositiveButton(getString(R.string.understood), (d, w) -> d.dismiss()).show();
     }
 
     /** One public metadata attempt for recognized platforms. Never uses Instagram credentials. */
