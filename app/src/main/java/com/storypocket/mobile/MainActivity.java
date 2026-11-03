@@ -526,7 +526,7 @@ public final class MainActivity extends Activity {
         status(getString(R.string.auto_search_progress, autoAttempts, AUTO_MAX_ATTEMPTS));
         main.postDelayed(() -> {
             if (generation == shareGeneration && nonce == probeNonce && autoProbeInFlight) {
-                autoScanFailed(generation, "Il player non ha risposto");
+                autoScanFailed(generation, getString(R.string.player_not_responding));
             }
         }, AUTO_PROBE_MS);
         saveCurrentMedia(true, generation, nonce);
@@ -692,7 +692,7 @@ public final class MainActivity extends Activity {
 
     private void saveCurrentMedia(boolean automatic, int generation, int nonce, boolean onlyVideo) {
         if (isSaving) {
-            if (automatic) autoScanFailed(generation, "Un salvataggio è già in corso");
+            if (automatic) autoScanFailed(generation, getString(R.string.save_already_running));
             return;
         }
         String browserPage = browser.getUrl();
@@ -705,7 +705,7 @@ public final class MainActivity extends Activity {
             return;
         }
         if (automatic) {
-            autoScanFailed(generation, "Il link condiviso non è ancora aperto");
+            autoScanFailed(generation, getString(R.string.shared_link_not_open));
         } else if (TargetParser.isInstagramUrl(browserPage)) {
             // Instagram navigates inside the page using pushState and modal viewers.
             // The native WebView URL may remain /, /reels/ or /explore/ while the
@@ -810,7 +810,7 @@ public final class MainActivity extends Activity {
     private void scanMediaOnPage(boolean automatic, int generation, int nonce, boolean onlyVideo,
                                  String page, String browserPage) {
         if (!MediaContextPolicy.isValid(browserPage, page)) {
-            if (automatic) autoScanFailed(generation, "Contenuto non aperto");
+            if (automatic) autoScanFailed(generation, getString(R.string.content_not_open));
             else { saving(false); status(getString(R.string.invalid_media_link)); }
             return;
         }
@@ -1026,7 +1026,7 @@ public final class MainActivity extends Activity {
                 String url = result.getString("url");
                 String type = result.getString("type");
                 if (automatic && "image".equals(type) && autoAttempts < 2) {
-                    autoScanFailed(generation, "Attendo per distinguere una foto dalla copertina del video");
+                    autoScanFailed(generation, getString(R.string.waiting_photo_or_video_cover));
                     return;
                 }
                 if ("video".equals(type) && VideoUrlPolicy.score(url) == 0) {
@@ -1059,7 +1059,7 @@ public final class MainActivity extends Activity {
                     } else {
                         saving(false);
                         status(getString(R.string.direct_download_unavailable));
-                        toast(e.getMessage() + " Prova Screenshot solo per le foto.");
+                        toast(e.getMessage() + getString(R.string.screenshot_photos_only_hint));
                     }
                 }
             }
