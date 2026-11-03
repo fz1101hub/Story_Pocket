@@ -12,6 +12,7 @@ struct BrowserView: UIViewRepresentable {
         return web
     }
     func updateUIView(_ web: WKWebView, context: Context) {
+        guard SocialURL.normalize(url.absoluteString) != nil else { return }
         guard context.coordinator.lastURL != url else { return }
         context.coordinator.lastURL = url
         web.load(URLRequest(url: url))
