@@ -62,7 +62,7 @@ enum SocialURL {
         for match in matches {
             guard let range = Range(match.range, in: text) else { continue }
             let candidate = String(text[range])
-                .trimmingCharacters(in: CharacterSet(charactersIn: ".,;)]}"))
+                .trimmingCharacters(in: CharacterSet(charactersIn: ".,;:!?)]}"))
             if let url = normalize(candidate) { return url }
         }
         return nil
