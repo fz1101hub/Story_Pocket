@@ -8,7 +8,7 @@ Run the **Build StoryPocket iOS Simulator** GitHub Actions workflow. It generate
 
 ## Languages
 
-Italian, English, French, German and Spanish in `Resources/*.lproj/Localizable.strings`. The device locale determines which strings are used.
+Italian, English, French, German and Spanish in `Resources/*.lproj/Localizable.strings`, plus localized Photos permission prompts in `Resources/*.lproj/InfoPlist.strings`. The device locale determines which strings are used.
 
 ## Scope and safety
 
