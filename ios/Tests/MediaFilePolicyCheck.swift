@@ -8,8 +8,8 @@ struct MediaFilePolicyCheck {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
 
-        for ext in ["jpg", "jpeg", "png", "heic", "heif", "gif", "mov", "mp4", "m4v", "MP4"] {
-            let file = directory.appendingPathComponent("sample-" + ext + "." + ext)
+        for (index, ext) in ["jpg", "jpeg", "png", "heic", "heif", "gif", "mov", "mp4", "m4v", "MP4"].enumerated() {
+            let file = directory.appendingPathComponent("sample-\(index)." + ext)
             precondition(MediaFilePolicy.isSupported(file), "Unsupported media extension: " + ext)
             precondition(!MediaFilePolicy.hasContent(file), "Missing file accepted: " + ext)
             try Data().write(to: file)
@@ -44,7 +44,7 @@ struct MediaFilePolicyCheck {
         precondition(MediaFilePolicy.hasContent(boundary), "Maximum allowed size rejected")
         precondition(!MediaFilePolicy.isTooLarge(boundary), "Allowed file flagged oversized")
         precondition(!MediaFilePolicy.hasContent(oversized), "Oversized media accepted")
-        precondition(MediaFilePolicy.hasAcceptableSize(directory.appendingPathComponent("sample-mp4.mp4")))
+        precondition(MediaFilePolicy.hasAcceptableSize(directory.appendingPathComponent("sample-7.mp4")))
 
         precondition(MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.MP4")))
         precondition(!MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.jpg")))
