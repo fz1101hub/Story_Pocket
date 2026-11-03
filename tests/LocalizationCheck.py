@@ -56,6 +56,8 @@ def check(platform, entries, pattern):
         if extra:
             errors.append(f"{platform}/{language}: extra {extra}")
         for key in reference.keys() & strings.keys():
+            if not strings[key].strip():
+                errors.append(f"{platform}/{language}/{key}: empty translation")
             expected = placeholders(reference[key], pattern)
             actual = placeholders(strings[key], pattern)
             if expected != actual:
