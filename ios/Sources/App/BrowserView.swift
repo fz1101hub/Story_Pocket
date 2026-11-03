@@ -19,8 +19,8 @@ struct BrowserView: UIViewRepresentable {
         func webView(_ webView: WKWebView,
                      decidePolicyFor navigationAction: WKNavigationAction,
                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            let scheme = navigationAction.request.url?.scheme?.lowercased()
-            decisionHandler(scheme == "https" || scheme == "about" ? .allow : .cancel)
+            let allowed = navigationAction.request.url.map(SocialURL.allowsBrowserNavigation) ?? false
+            decisionHandler(allowed ? .allow : .cancel)
         }
     }
 }
