@@ -1242,8 +1242,9 @@ public final class MainActivity extends Activity {
                         long now = SystemClock.elapsedRealtime();
                         if (now - lastUpdate > 1800) {
                             lastUpdate = now;
-                            String progress = "Scaricati " + (total / 1024) + " KB" +
-                                (length > 0 ? " su " + (length / 1024) + " KB" : "") + "…";
+                            String progress = length > 0
+                                ? getString(R.string.download_progress_total, total / 1024, length / 1024)
+                                : getString(R.string.download_progress, total / 1024);
                             main.post(() -> { if (token == transferGeneration) statusText.setText(progress); });
                         }
                     }
