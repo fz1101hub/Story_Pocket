@@ -1,9 +1,15 @@
-# StoryPocket iOS
+# StoryPocket iOS — prototype
 
-Development has started for a native iOS app using SwiftUI and WKWebView.
+SwiftUI app for iOS 16+, with a social HTTPS link validator, in-app WKWebView, file importer and explicit PhotoKit save to Photos.
 
-Planned and prototyped: native home screen with the StoryPocket purple-pink-orange palette, HTTPS social-link recognition, Share Extension for links/photos/videos, user-authorized saving to Photos, and localizations in Italian, English, French, German and Spanish.
+## Build
 
-Status: initial prototype sources exist as a separate downloadable project archive. An XcodeGen project and a macOS GitHub Actions simulator build are being integrated next. **This README does not mean that an iOS IPA has been built or signed.**
+Run the **Build StoryPocket iOS Simulator** GitHub Actions workflow. It generates an Xcode project with XcodeGen and builds an unsigned simulator app. A simulator artifact is not an installable iPhone IPA.
 
-Privacy: no credentials from social apps may be forwarded to external providers; downloaded files must be available and authorized.
+## Languages
+
+Italian, English, French, German and Spanish in `Resources/*.lproj/Localizable.strings`. The device locale determines which strings are used.
+
+## Scope and safety
+
+The current iOS prototype does **not** automatically download social media, bypass authentication, or access private posts. A Share Extension and more extensive media handling are future work. Device distribution requires signing and provisioning; never commit credentials.

@@ -1,0 +1,15 @@
+"app.title" = "StoryPocket";
+"home.subtitle" = "Guarda lo que te gusta cuando el archivo esté disponible.";
+"home.add_link" = "Pega un enlace social";
+"home.link_placeholder" = "Enlace HTTPS de una red compatible";
+"home.paste" = "Pegar";
+"home.open" = "Abrir";
+"home.import_title" = "Importar foto o vídeo";
+"home.import_hint" = "Elige un archivo para guardarlo en Fotos.";
+"home.import_button" = "Elegir archivo";
+"common.done" = "Listo";
+"status.invalid_link" = "Enlace no válido o no compatible.";
+"status.import_failed" = "Error al importar.";
+"status.saved" = "Guardado en Fotos.";
+"status.save_failed" = "Error al guardar.";
+"home.limitations" = "Las descargas automáticas de redes sociales aún no están disponibles en iOS.";

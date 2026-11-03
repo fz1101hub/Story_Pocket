@@ -1,0 +1,28 @@
+name: StoryPocket
+options:
+  bundleIdPrefix: com.storypocket
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+targets:
+  StoryPocket:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/App
+      - path: Sources/Shared
+      - path: Resources
+        buildPhase: resources
+    info:
+      path: Sources/App/Info.plist
+      properties:
+        CFBundleDisplayName: StoryPocket
+        NSPhotoLibraryAddUsageDescription: "StoryPocket saves media you explicitly choose."
+        UILaunchScreen: {}
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.storypocket.ios
+        TARGETED_DEVICE_FAMILY: "1,2"
