@@ -5,7 +5,9 @@ struct BrowserView: UIViewRepresentable {
     let url: URL
     func makeCoordinator() -> Coordinator { Coordinator() }
     func makeUIView(context: Context) -> WKWebView {
-        let web = WKWebView()
+        let configuration = WKWebViewConfiguration()
+        configuration.websiteDataStore = .nonPersistent()
+        let web = WKWebView(frame: .zero, configuration: configuration)
         web.navigationDelegate = context.coordinator
         return web
     }
