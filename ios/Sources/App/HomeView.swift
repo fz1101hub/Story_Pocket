@@ -82,8 +82,11 @@ struct HomeView: View {
             }
             .fileImporter(isPresented: $importing, allowedContentTypes: [.image, .movie]) { result in
                 switch result {
-                case .failure:
-                    status = NSLocalizedString("status.import_failed", comment: "")
+                case .failure(let error):
+                    // Dismissing the document picker is not an import failure.
+                    if (error as NSError).code != NSUserCancelledError {
+                        status = NSLocalizedString("status.import_failed", comment: "")
+                    }
                 case .success(let url):
                     let access = url.startAccessingSecurityScopedResource()
                     let ext = url.pathExtension
