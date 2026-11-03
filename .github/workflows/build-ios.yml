@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - 'ios/**'
+      - 'tests/LocalizationCheck.py'
       - '.github/workflows/build-ios.yml'
   pull_request:
     branches: [main]
     paths:
       - 'ios/**'
+      - 'tests/LocalizationCheck.py'
       - '.github/workflows/build-ios.yml'
 permissions:
   contents: read
@@ -23,6 +25,8 @@ jobs:
         run: |
           brew install xcodegen
           xcodebuild -version
+      - name: Validate Android and iOS localization parity
+        run: python3 tests/LocalizationCheck.py
       - name: Check shared social URL parsing
         run: |
           set -euo pipefail
