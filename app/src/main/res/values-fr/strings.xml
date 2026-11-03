@@ -34,4 +34,7 @@
     <string name="screenshot_saved">Capture enregistrée dans Download/StoryPocket ✓</string>
     <string name="screenshot_png_saved">Capture enregistrée au format PNG.</string>
     <string name="screenshot_save_failed">Impossible d\'enregistrer la capture.</string>
+    <string name="shared_media_saving">Fichier multimédia reçu : enregistrement dans Download/StoryPocket…</string>
+    <string name="shared_content_invalid">Aucun lien social ni fichier multimédia valide dans le partage.</string>
+    <string name="share_https_or_media">Partagez un lien HTTPS d’un réseau social ou un fichier photo/vidéo.</string>
 </resources>
