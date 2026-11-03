@@ -24,8 +24,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Configura Android SDK
-        uses: android-actions/setup-android@v3
+      # ubuntu-latest include già l'Android SDK: evitare setup-android@v3
+      # perché la versione corrente tenta di installare il pacchetto
+      # obsoleto "tools" e fallisce con "Failed to find package 'tools'".
+      - name: Verifica Android SDK preinstallato
+        run: |
+          test -d "$ANDROID_HOME"
+          command -v sdkmanager
 
       - name: Gradle 8.10.2
         uses: gradle/actions/setup-gradle@v4
