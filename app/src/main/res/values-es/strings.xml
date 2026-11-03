@@ -62,4 +62,16 @@
     <string name="capturing_screen">Capturando la pantalla visible…</string>
     <string name="screen_capture_failed">No se pudo capturar la pantalla.</string>
     <string name="capture_not_allowed">El dispositivo o reproductor no permite esta captura.</string>
+    <string name="social_page_opened">Página de %1$s abierta. Pulsa Guardar para buscar un archivo público o usa Captura de pantalla.</string>
+    <string name="social_link_received">Enlace de %1$s recibido. Abriendo contenido…</string>
+    <string name="social_link_opened">Enlace de %1$s abierto. Guarda archivos compartidos o usa Captura de pantalla; la descarga directa puede no estar disponible.</string>
+    <string name="auto_search_progress">Búsqueda (%1$d/%2$d), termina en 25 segundos…</string>
+    <string name="shared_media_not_found">No se encontró el archivo compartido: %1$s</string>
+    <string name="social_auto_extract_unavailable">No se puede extraer automáticamente este contenido de %1$s.</string>
+    <string name="instagram_media_not_identified">Página de Instagram abierta, pero no se pudo identificar un archivo concreto. Abre el Reel/publicación a pantalla completa o usa Copiar enlace y Abrir.</string>
+    <string name="instagram_direct_link_missing">El contenido es visible, pero falta el enlace directo a la publicación o Reel. Ábrelo a pantalla completa o pega su enlace arriba.</string>
+    <string name="media_found_by_method">Archivo encontrado mediante %1$s: comprobando y guardando el contenido…</string>
+    <string name="social_direct_unavailable">%1$s: enlace reconocido, pero la descarga directa no está disponible. Comparte el archivo original o usa Captura de pantalla.</string>
+    <string name="social_public_file_search">%1$s: buscando un archivo público disponible…</string>
+    <string name="social_media_type_found">%1$s: archivo %2$s detectado; comprobando y guardando…</string>
 </resources>
