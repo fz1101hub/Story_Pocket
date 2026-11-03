@@ -545,7 +545,7 @@ public final class MainActivity extends Activity {
                 // Stories have numeric IDs, not Post/Reel shortcodes. Try their own resolver.
                 tryInstagramStoryMetadata(story, browserPage, false);
             } else {
-                status("Ricerca terminata: nessun media scaricabile identificato.");
+                status(getString(R.string.auto_no_media));
                 toast("Non ho trovato il media condiviso: " + detail);
             }
         } else {
@@ -713,7 +713,7 @@ public final class MainActivity extends Activity {
             // visible player is for an individual Post/Reel/Story.
             resolveVisibleMediaPage(browserPage, onlyVideo);
         } else {
-            toast("Apri una pagina Instagram nel browser di StoryPocket.");
+            toast(getString(R.string.open_instagram_page));
         }
     }
 
@@ -804,7 +804,7 @@ public final class MainActivity extends Activity {
                 return;
             }
             manualProbeNonce++; // invalidate discovery watchdog
-            status("Contenuto individuato: provo il salvataggio…");
+            status(getString(R.string.media_found_saving));
             scanMediaOnPage(false, -1, -1, onlyVideo, page, browserPage);
         });
     }
@@ -814,7 +814,7 @@ public final class MainActivity extends Activity {
                                  String page, String browserPage) {
         if (!MediaContextPolicy.isValid(browserPage, page)) {
             if (automatic) autoScanFailed(generation, "Contenuto non aperto");
-            else { saving(false); status("Il link del media non è valido."); }
+            else { saving(false); status(getString(R.string.invalid_media_link)); }
             return;
         }
         final int manualNonce;
