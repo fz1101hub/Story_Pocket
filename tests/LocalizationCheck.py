@@ -76,11 +76,14 @@ def main():
     check("Android", android, ANDROID_PLACEHOLDER)
     # Detect Android Java references that have no resource in the default locale.
     activity = (ROOT / "app/src/main/java/com/storypocket/mobile/MainActivity.java").read_text(encoding="utf-8")
-    referenced = set(re.findall(r"\bR\.string\.([A-Za-z_][A-Za-z_0-9]*)", activity))
+    java_sources = sorted((ROOT / "app/src/main/java").rglob("*.java"))
+    referenced = set()
+    for source in java_sources:
+        referenced.update(re.findall(r"\bR\.string\.([A-Za-z_][A-Za-z_0-9]*)", source.read_text(encoding="utf-8")))
     undefined = sorted(referenced - android["it"].keys())
     if undefined:
         raise ValueError(f"Android/MainActivity.java: undefined string resources {undefined}")
-    print(f"Android: {len(referenced)} MainActivity string references resolved")
+    print(f"Android: {len(referenced)} string references resolved across {len(java_sources)} Java files")
     # Prevent regressions to literal Italian messages in the two main feedback helpers.
     hardcoded_feedback = re.findall(r'\b(?:status|toast)\s*\(\s*"', activity)
     if hardcoded_feedback:
@@ -109,10 +112,7 @@ def main():
         if "NSPhotoLibraryAddUsageDescription" not in strings:
             raise ValueError(f"iOS InfoPlist/{language}: missing Photos add-only permission prompt")
     # Verify explicit NSLocalizedString keys in the app and share extension.
-    swift_sources = [
-        ROOT / "ios/Sources/App/HomeView.swift",
-        ROOT / "ios/Sources/Extension/ShareViewController.swift",
-    ]
+    swift_sources = sorted((ROOT / "ios/Sources").rglob("*.swift"))
     swift_keys = set()
     for source in swift_sources:
         swift = source.read_text(encoding="utf-8")
@@ -133,7 +133,7 @@ def main():
     missing_ios = sorted(swift_keys - ios["it"].keys())
     if missing_ios:
         raise ValueError(f"iOS: undefined NSLocalizedString keys {missing_ios}")
-    print(f"iOS: {len(swift_keys)} explicit NSLocalizedString keys resolved")
+    print(f"iOS: {len(swift_keys)} explicit and implicit localization keys resolved across {len(swift_sources)} Swift files")
     print("Localization parity checks passed.")
 
 if __name__ == "__main__":
