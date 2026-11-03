@@ -29,6 +29,13 @@ struct MediaFilePolicyCheck {
         try FileManager.default.createDirectory(at: fakeImageDirectory, withIntermediateDirectories: false)
         precondition(!MediaFilePolicy.hasContent(fakeImageDirectory), "Directory accepted as media")
 
+        // A shared file must be a regular file, never an alias to another path.
+        let symlink = directory.appendingPathComponent("linked.jpg")
+        try FileManager.default.createSymbolicLink(
+            at: symlink, withDestinationURL: directory.appendingPathComponent("sample-0.jpg")
+        )
+        precondition(!MediaFilePolicy.hasContent(symlink), "Symbolic link accepted as media")
+
         let oversized = directory.appendingPathComponent("oversized.mp4")
         try Data([0x01]).write(to: oversized)
         let handle = try FileHandle(forWritingTo: oversized)
