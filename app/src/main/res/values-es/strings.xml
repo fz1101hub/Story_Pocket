@@ -31,4 +31,7 @@
     <string name="shared_content_waiting">Esperando el contenido compartido. Si no se abre, usa Copiar enlace.</string>
     <string name="content_opened_save">Contenido abierto: pulsa Guardar foto/vídeo o Captura de pantalla.</string>
     <string name="share_to_start">Comparte un enlace social o un archivo multimedia para empezar.</string>
+    <string name="screenshot_saved">Captura guardada en Download/StoryPocket ✓</string>
+    <string name="screenshot_png_saved">Captura guardada como PNG.</string>
+    <string name="screenshot_save_failed">No se pudo guardar la captura.</string>
 </resources>
