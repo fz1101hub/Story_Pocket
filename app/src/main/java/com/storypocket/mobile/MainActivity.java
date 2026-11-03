@@ -1377,10 +1377,10 @@ public final class MainActivity extends Activity {
             }
             publishDownload(pending);
             pending = null;
-            status("Schermata salvata in Download/StoryPocket ✓");
-            toast("Schermata salvata come PNG.");
+            status(getString(R.string.screenshot_saved));
+            toast(getString(R.string.screenshot_png_saved));
         } catch (Exception e) {
-            status("Impossibile salvare la schermata.");
+            status(getString(R.string.screenshot_save_failed));
             toast(e.getMessage());
         } finally {
             if (pending != null) getContentResolver().delete(pending, null, null);
