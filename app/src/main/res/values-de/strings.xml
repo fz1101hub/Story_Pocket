@@ -99,4 +99,17 @@
     <string name="content_not_open">Inhalt ist nicht geöffnet</string>
     <string name="waiting_photo_or_video_cover">Warte, um ein Foto von einem Video-Vorschaubild zu unterscheiden</string>
     <string name="screenshot_photos_only_hint">Screenshot nur für Fotos verwenden.</string>
+    <string name="player_no_result">Keine Antwort vom Player.</string>
+    <string name="download_create_failed">Datei konnte nicht in Downloads erstellt werden.</string>
+    <string name="download_open_failed">Datei in Downloads konnte nicht geöffnet werden.</string>
+    <string name="download_empty_media">Die empfangene Mediendatei ist leer.</string>
+    <string name="download_incomplete">Download unvollständig. Bitte erneut versuchen.</string>
+    <string name="shared_unsupported_media">Die geteilte Datei ist kein unterstütztes Medium.</string>
+    <string name="shared_destination_failed">Zieldatei konnte nicht geöffnet werden.</string>
+    <string name="shared_empty_file">Die geteilte Datei ist leer.</string>
+    <string name="screenshot_create_failed">Screenshot konnte nicht erstellt werden.</string>
+    <string name="screenshot_png_failed">PNG konnte nicht geschrieben werden.</string>
+    <string name="download_wrong_media_type">Die Plattform lieferte einen anderen Medientyp (möglicherweise ein Vorschaubild).</string>
+    <string name="download_invalid_response">Der Server lieferte eine Seite oder eine ungültige Datei.</string>
+    <string name="shared_file_too_large">Datei zu groß (über 120 MB).</string>
 </resources>
