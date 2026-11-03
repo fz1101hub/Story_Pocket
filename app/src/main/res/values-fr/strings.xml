@@ -31,4 +31,7 @@
     <string name="shared_content_waiting">En attente du contenu partagé. S\'il ne s\'ouvre pas, utilisez Copier le lien.</string>
     <string name="content_opened_save">Contenu ouvert : appuyez sur Enregistrer photo/vidéo ou Capture d\'écran.</string>
     <string name="share_to_start">Partagez un lien ou un fichier multimédia pour commencer.</string>
+    <string name="screenshot_saved">Capture enregistrée dans Download/StoryPocket ✓</string>
+    <string name="screenshot_png_saved">Capture enregistrée au format PNG.</string>
+    <string name="screenshot_save_failed">Impossible d\'enregistrer la capture.</string>
 </resources>
