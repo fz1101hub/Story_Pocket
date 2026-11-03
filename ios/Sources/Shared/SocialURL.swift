@@ -31,10 +31,11 @@ enum SocialURL {
               components.host?.lowercased() == "open",
               (components.path.isEmpty || components.path == "/"),
               components.user == nil, components.password == nil,
-              components.port == nil,
-              let values = components.queryItems?.filter({ $0.name == "url" }),
-              values.count == 1,
-              let value = values.first?.value else { return nil }
+              components.port == nil, components.fragment == nil,
+              let items = components.queryItems,
+              items.count == 1,
+              items[0].name == "url",
+              let value = items[0].value else { return nil }
         return normalize(value)
     }
 
