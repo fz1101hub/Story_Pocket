@@ -53,7 +53,10 @@ struct HomeView: View {
                     Divider()
                     Text("home.import_title").font(.headline)
                     Text("home.import_hint").foregroundStyle(.secondary)
-                    Button("home.import_button") { importing = true }
+                    Button("home.import_button") {
+                        status = ""
+                        importing = true
+                    }
                         .buttonStyle(.borderedProminent)
                         .disabled(isSaving)
 
