@@ -108,10 +108,16 @@ final class ShareViewController: UIViewController {
         message.text = NSLocalizedString("share.saving", comment: "")
         ExtensionPhotoSaver.save(file) { [weak self] success in
             DispatchQueue.main.async {
-                try? FileManager.default.removeItem(at: file)
-                self?.pendingFile = nil
-                self?.isSaving = false
-                self?.message.text = NSLocalizedString(success ? "status.saved" : "status.save_failed", comment: "")
+                guard let self else { return }
+                self.isSaving = false
+                if success {
+                    try? FileManager.default.removeItem(at: file)
+                    self.pendingFile = nil
+                } else {
+                    // Keep the imported file so the user can retry after a PhotoKit failure.
+                    self.action.isEnabled = true
+                }
+                self.message.text = NSLocalizedString(success ? "status.saved" : "status.save_failed", comment: "")
             }
         }
     }
