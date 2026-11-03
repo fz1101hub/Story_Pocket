@@ -104,7 +104,7 @@ final class ShareViewController: UIViewController {
         guard let file = pendingFile else { return }
         action.isEnabled = false
         message.text = NSLocalizedString("share.saving", comment: "")
-        PhotoSaver.save(file) { [weak self] success in
+        ExtensionPhotoSaver.save(file) { [weak self] success in
             DispatchQueue.main.async {
                 try? FileManager.default.removeItem(at: file)
                 self?.pendingFile = nil
@@ -116,5 +116,28 @@ final class ShareViewController: UIViewController {
     @objc private func close() {
         if let pendingFile { try? FileManager.default.removeItem(at: pendingFile) }
         extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
+    }
+}
+
+private enum ExtensionPhotoSaver {
+    static func save(_ file: URL, completion: @escaping (Bool) -> Void) {
+        let ext = file.pathExtension.lowercased()
+        guard ["jpg", "jpeg", "png", "heic", "heif", "gif", "mov", "mp4", "m4v"].contains(ext) else {
+            completion(false)
+            return
+        }
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+            guard status == .authorized || status == .limited else {
+                completion(false)
+                return
+            }
+            PHPhotoLibrary.shared().performChanges({
+                if ["mov", "mp4", "m4v"].contains(ext) {
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: file)
+                } else if let image = UIImage(contentsOfFile: file.path) {
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                }
+            }) { success, _ in completion(success) }
+        }
     }
 }
