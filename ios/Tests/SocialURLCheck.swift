@@ -26,6 +26,9 @@ struct SocialURLCheck {
         expect("https://instagram.com:443/post", "https://instagram.com:443/post")
         expect("https://www.instagram.com/p/abc?utm_source=share", "https://www.instagram.com/p/abc?utm_source=share")
         expect("A link (https://www.instagram.com/p/abc).", "https://www.instagram.com/p/abc")
+        expect("Watch this! https://www.instagram.com/reel/abc!", "https://www.instagram.com/reel/abc")
+        expect("Link: https://bsky.app/profile/test/post/1?", "https://bsky.app/profile/test/post/1")
+        expect("Video https://youtu.be/abc:", "https://youtu.be/abc")
         func expectIncoming(_ input: String, _ expected: String?) {
             guard let url = URL(string: input) else { fatalError("Invalid test URL: \(input)") }
             let actual = SocialURL.incoming(url)?.absoluteString
