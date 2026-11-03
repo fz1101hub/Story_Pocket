@@ -41,4 +41,8 @@
     <string name="profile_link_received">Enlace de perfil recibido. Abre una publicación, un Reel o una Story y pulsa Guardar.</string>
     <string name="auto_save_busy">Ya hay otro guardado en curso. Operación automática detenida.</string>
     <string name="auto_page_mismatch">La página no coincide con el enlace compartido: búsqueda automática detenida.</string>
+    <string name="auto_no_media">Búsqueda finalizada: no se encontraron archivos multimedia descargables.</string>
+    <string name="open_instagram_page">Abre una página de Instagram en el navegador de StoryPocket.</string>
+    <string name="media_found_saving">Contenido encontrado: intentando guardar…</string>
+    <string name="invalid_media_link">El enlace multimedia no es válido.</string>
 </resources>
