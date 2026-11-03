@@ -11,4 +11,12 @@
     <string name="cancel">✕ Cancel operation</string>
     <string name="cancelled">Operation cancelled. No active download.</string>
     <string name="nothing_running">No operation in progress.</string>
+    <string name="social_platforms">Instagram · TikTok · Pinterest · Reddit · Bluesky · more</string>
+    <string name="platform_detected">✓ %1$s detected · Share → StoryPocket</string>
+    <string name="loading">Loading…</string>
+    <string name="link_copied">Link copied to clipboard.</string>
+    <string name="invalid_link_first">Open or paste a valid social link first.</string>
+    <string name="info_title">StoryPocket · How it works</string>
+    <string name="info_body">Open a social app and choose Share → StoryPocket. You can also paste a link or share a photo/video file. Direct downloads are not always available and some platforms impose restrictions. Files are saved in Download/StoryPocket. This app is not affiliated with social platforms. Save only content you are entitled to keep.</string>
+    <string name="understood">Got it</string>
 </resources>
