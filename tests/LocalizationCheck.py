@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+"""Check five-language Android/iOS resource parity without external dependencies."""
+from collections import Counter
+from pathlib import Path
+import re
+import sys
+import xml.etree.ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+LANGUAGES = ("it", "en", "fr", "de", "es")
+ANDROID_BASE = ROOT / "app/src/main/res"
+IOS_BASE = ROOT / "ios/Resources"
+ANDROID_PLACEHOLDER = re.compile(r"%(?:\d+\$)?[-#+ 0,(]*\d*(?:\.\d+)?[a-zA-Z]")
+IOS_PLACEHOLDER = re.compile(r"%(?:\d+\$)?(?:@|d|i|u|f|ld|lld|lu|llu)")
+IOS_LINE = re.compile(r'^\s*"((?:[^"\\]|\\.)+)"\s*=\s*"((?:[^"\\]|\\.)*)"\s*;\s*$')
+
+def android_strings(path):
+    root = ET.parse(path).getroot()
+    if root.tag != "resources":
+        raise ValueError(f"{path}: root must be resources")
+    entries = {}
+    for element in root.findall("string"):
+        key = element.attrib["name"]
+        if key in entries:
+            raise ValueError(f"{path}: duplicate key {key}")
+        entries[key] = "".join(element.itertext())
+    return entries
+
+def ios_strings(path):
+    entries = {}
+    for line_number, line in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+        line = line.strip()
+        if not line or line.startswith("//") or line.startswith("/*") or line.startswith("*"):
+            continue
+        match = IOS_LINE.fullmatch(line)
+        if not match:
+            raise ValueError(f"{path}:{line_number}: malformed localization entry")
+        key, value = match.groups()
+        if key in entries:
+            raise ValueError(f"{path}:{line_number}: duplicate key {key}")
+        entries[key] = value
+    return entries
+
+def placeholders(value, pattern):
+    # Ignore escaped percent signs, but retain argument positions and types.
+    return Counter(pattern.findall(value.replace("%%", "")))
+
+def check(platform, entries, pattern):
+    reference = entries["it"]
+    errors = []
+    for language, strings in entries.items():
+        missing = sorted(reference.keys() - strings.keys())
+        extra = sorted(strings.keys() - reference.keys())
+        if missing:
+            errors.append(f"{platform}/{language}: missing {missing}")
+        if extra:
+            errors.append(f"{platform}/{language}: extra {extra}")
+        for key in reference.keys() & strings.keys():
+            expected = placeholders(reference[key], pattern)
+            actual = placeholders(strings[key], pattern)
+            if expected != actual:
+                errors.append(f"{platform}/{language}/{key}: placeholders {dict(actual)} != {dict(expected)}")
+    if errors:
+        raise ValueError("\n".join(errors))
+    print(f"{platform}: {len(reference)} matching keys across {len(entries)} languages")
+
+def main():
+    android = {}
+    ios = {}
+    for language in LANGUAGES:
+        android_folder = "values" if language == "it" else f"values-{language}"
+        android[language] = android_strings(ANDROID_BASE / android_folder / "strings.xml")
+        ios[language] = ios_strings(IOS_BASE / f"{language}.lproj" / "Localizable.strings")
+    check("Android", android, ANDROID_PLACEHOLDER)
+    check("iOS", ios, IOS_PLACEHOLDER)
+    print("Localization parity checks passed.")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, ET.ParseError) as error:
+        print(f"Localization validation failed: {error}", file=sys.stderr)
+        sys.exit(1)
