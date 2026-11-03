@@ -74,4 +74,23 @@
     <string name="social_direct_unavailable">%1$s: il link è riconosciuto, ma il download diretto non è disponibile. Puoi condividere il file originale oppure usare Screenshot.</string>
     <string name="social_public_file_search">%1$s: cerco un file pubblico disponibile…</string>
     <string name="social_media_type_found">%1$s: file %2$s rilevato; verifico e salvo…</string>
+    <string name="public_file_missing">%1$s: nessun file diretto accessibile.</string>
+    <string name="public_file_missing_reason">Il social potrebbe richiedere accesso, limitare le API o usare streaming non scaricabile.</string>
+    <string name="public_recovery_failed">%1$s: recupero non riuscito.</string>
+    <string name="public_content_unavailable">Il contenuto pubblico non è disponibile: %1$s</string>
+    <string name="instagram_original_unavailable">Instagram non ha esposto un file originale recuperabile.</string>
+    <string name="instagram_original_unavailable_reason">Sono stati provati player, richieste, dati del Post/Reel e pagina incorporata. Per i contenuti pubblici servirà un eventuale resolver esterno con consenso.</string>
+    <string name="instagram_service_failed">Ricerca nel servizio Instagram non riuscita.</string>
+    <string name="instagram_service_failed_reason">Il servizio può richiedere accesso o bloccare questo metodo: %1$s</string>
+    <string name="story_unavailable">Story non scaricabile con i metodi disponibili.</string>
+    <string name="story_unavailable_reason">Ho controllato player, dati della Story e richiesta Instagram. Il contenuto potrebbe richiedere un metodo non disponibile o essere scaduto.</string>
+    <string name="story_original_found">Story trovata: verifico e salvo il %1$s originale…</string>
+    <string name="story_original_failed">Ricerca originale della Story non riuscita.</string>
+    <string name="story_original_failed_reason">Instagram potrebbe bloccare la richiesta: %1$s</string>
+    <string name="media_saved_location">Salvato in Download/StoryPocket ✓</string>
+    <string name="media_saved_success">Media salvato correttamente.</string>
+    <string name="media_save_unavailable">Media non disponibile: nessun file salvato.</string>
+    <string name="shared_file_saved_location">File condiviso salvato in Download/StoryPocket ✓</string>
+    <string name="shared_file_saved_success">File condiviso salvato.</string>
+    <string name="shared_file_save_failed">Non è stato possibile salvare il file condiviso.</string>
 </resources>
