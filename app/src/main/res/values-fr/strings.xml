@@ -74,4 +74,23 @@
     <string name="social_direct_unavailable">%1$s : lien reconnu, mais téléchargement direct indisponible. Partagez le fichier original ou faites une capture.</string>
     <string name="social_public_file_search">%1$s : recherche d’un fichier public disponible…</string>
     <string name="social_media_type_found">%1$s : fichier %2$s détecté ; vérification et enregistrement…</string>
+    <string name="public_file_missing">%1$s : aucun fichier direct accessible.</string>
+    <string name="public_file_missing_reason">La plateforme peut exiger une connexion, limiter ses API ou utiliser un flux non téléchargeable.</string>
+    <string name="public_recovery_failed">%1$s : récupération échouée.</string>
+    <string name="public_content_unavailable">Contenu public indisponible : %1$s</string>
+    <string name="instagram_original_unavailable">Instagram n’a fourni aucun fichier original récupérable.</string>
+    <string name="instagram_original_unavailable_reason">Lecteur, requêtes, données de publication/Reel et page intégrée vérifiés. Un service externe peut être nécessaire avec votre accord.</string>
+    <string name="instagram_service_failed">Échec de la recherche auprès du service Instagram.</string>
+    <string name="instagram_service_failed_reason">Le service peut exiger une connexion ou bloquer cette méthode : %1$s</string>
+    <string name="story_unavailable">Impossible de télécharger la Story avec les méthodes disponibles.</string>
+    <string name="story_unavailable_reason">Lecteur, données de Story et requête Instagram vérifiés. Le contenu peut avoir expiré ou nécessiter une méthode indisponible.</string>
+    <string name="story_original_found">Story trouvée : vérification et enregistrement du fichier %1$s original…</string>
+    <string name="story_original_failed">Échec de la recherche de la Story originale.</string>
+    <string name="story_original_failed_reason">Instagram peut bloquer la requête : %1$s</string>
+    <string name="media_saved_location">Enregistré dans Download/StoryPocket ✓</string>
+    <string name="media_saved_success">Média enregistré avec succès.</string>
+    <string name="media_save_unavailable">Média indisponible : aucun fichier enregistré.</string>
+    <string name="shared_file_saved_location">Fichier partagé enregistré dans Download/StoryPocket ✓</string>
+    <string name="shared_file_saved_success">Fichier partagé enregistré.</string>
+    <string name="shared_file_save_failed">Impossible d’enregistrer le fichier partagé.</string>
 </resources>
