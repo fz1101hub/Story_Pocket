@@ -1059,7 +1059,7 @@ public final class MainActivity extends Activity {
                     } else {
                         saving(false);
                         status(getString(R.string.direct_download_unavailable));
-                        toast(e.getMessage() + getString(R.string.screenshot_photos_only_hint));
+                        toast(e.getMessage() + " " + getString(R.string.screenshot_photos_only_hint));
                     }
                 }
             }
