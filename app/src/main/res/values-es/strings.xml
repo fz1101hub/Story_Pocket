@@ -99,4 +99,17 @@
     <string name="content_not_open">El contenido no está abierto</string>
     <string name="waiting_photo_or_video_cover">Esperando para distinguir una foto de la miniatura de un vídeo</string>
     <string name="screenshot_photos_only_hint">Usa Captura de pantalla solo para fotos.</string>
+    <string name="player_no_result">El reproductor no devolvió resultados.</string>
+    <string name="download_create_failed">No se pudo crear el archivo en Descargas.</string>
+    <string name="download_open_failed">No se pudo abrir el archivo en Descargas.</string>
+    <string name="download_empty_media">El archivo multimedia recibido está vacío.</string>
+    <string name="download_incomplete">Descarga incompleta. Inténtalo de nuevo.</string>
+    <string name="shared_unsupported_media">El archivo compartido no es un formato multimedia compatible.</string>
+    <string name="shared_destination_failed">No se pudo abrir el archivo de destino.</string>
+    <string name="shared_empty_file">El archivo compartido está vacío.</string>
+    <string name="screenshot_create_failed">No se pudo crear la captura de pantalla.</string>
+    <string name="screenshot_png_failed">No se pudo escribir el archivo PNG.</string>
+    <string name="download_wrong_media_type">La red social devolvió otro tipo de archivo (quizá una miniatura).</string>
+    <string name="download_invalid_response">El servidor devolvió una página o un archivo no válido.</string>
+    <string name="shared_file_too_large">Archivo demasiado grande (más de 120 MB).</string>
 </resources>
