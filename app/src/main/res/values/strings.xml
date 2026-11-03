@@ -62,4 +62,16 @@
     <string name="capturing_screen">Acquisizione della schermata visibile…</string>
     <string name="screen_capture_failed">Acquisizione schermata non riuscita.</string>
     <string name="capture_not_allowed">Il dispositivo o il player non permette questa acquisizione.</string>
+    <string name="social_page_opened">Pagina %1$s aperta. Premi Salva per cercare un file pubblico, oppure Screenshot.</string>
+    <string name="social_link_received">Link %1$s ricevuto. Apro il contenuto…</string>
+    <string name="social_link_opened">Link %1$s aperto. Salva file condivisi o usa Screenshot; il download diretto può non essere disponibile.</string>
+    <string name="auto_search_progress">Ricerca (%1$d/%2$d), termine entro 25 secondi…</string>
+    <string name="shared_media_not_found">Non ho trovato il media condiviso: %1$s</string>
+    <string name="social_auto_extract_unavailable">Non posso estrarre automaticamente questo contenuto da %1$s.</string>
+    <string name="instagram_media_not_identified">Pagina Instagram aperta, ma non riesco a identificare un singolo media. Apri il Reel/Post a schermo intero o usa Copia link e Apri.</string>
+    <string name="instagram_direct_link_missing">Il contenuto è visibile, ma manca il link diretto al Post/Reel. Aprilo a schermo intero oppure incolla il suo link in alto.</string>
+    <string name="media_found_by_method">File trovato con %1$s: verifico e salvo il media…</string>
+    <string name="social_direct_unavailable">%1$s: il link è riconosciuto, ma il download diretto non è disponibile. Puoi condividere il file originale oppure usare Screenshot.</string>
+    <string name="social_public_file_search">%1$s: cerco un file pubblico disponibile…</string>
+    <string name="social_media_type_found">%1$s: file %2$s rilevato; verifico e salvo…</string>
 </resources>
