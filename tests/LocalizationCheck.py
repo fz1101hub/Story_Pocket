@@ -95,6 +95,9 @@ def main():
     if hardcoded_exceptions:
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_exceptions)} untranslated exception messages")
     print("Android: no literal transfer exception messages")
+    if re.search(r'ClipData\.newPlainText\s*\(\s*"', activity):
+        raise ValueError("Android/MainActivity.java: clipboard preview label is not localized")
+    print("Android: clipboard preview label is localized")
     check("iOS", ios, IOS_PLACEHOLDER)
     # System permission prompts live in InfoPlist.strings, not Localizable.strings.
     ios_privacy = {
