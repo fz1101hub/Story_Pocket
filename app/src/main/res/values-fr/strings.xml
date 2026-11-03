@@ -37,4 +37,8 @@
     <string name="shared_media_saving">Fichier multimédia reçu : enregistrement dans Download/StoryPocket…</string>
     <string name="shared_content_invalid">Aucun lien social ni fichier multimédia valide dans le partage.</string>
     <string name="share_https_or_media">Partagez un lien HTTPS d’un réseau social ou un fichier photo/vidéo.</string>
+    <string name="auto_search_started">Lien reçu. Recherche automatique : 25 secondes maximum…</string>
+    <string name="profile_link_received">Lien de profil reçu. Ouvrez une publication, un Reel ou une Story, puis appuyez sur Enregistrer.</string>
+    <string name="auto_save_busy">Un autre enregistrement est déjà en cours. Opération automatique arrêtée.</string>
+    <string name="auto_page_mismatch">Page différente du lien partagé : recherche automatique arrêtée.</string>
 </resources>
