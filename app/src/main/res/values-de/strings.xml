@@ -112,4 +112,6 @@
     <string name="download_wrong_media_type">Die Plattform lieferte einen anderen Medientyp (möglicherweise ein Vorschaubild).</string>
     <string name="download_invalid_response">Der Server lieferte eine Seite oder eine ungültige Datei.</string>
     <string name="shared_file_too_large">Datei zu groß (über 120 MB).</string>
+    <string name="download_progress">%1$d KB heruntergeladen…</string>
+    <string name="download_progress_total">%1$d von %2$d KB heruntergeladen…</string>
 </resources>
