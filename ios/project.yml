@@ -37,8 +37,6 @@ targets:
       - path: Sources/Shared
       - path: Resources
         buildPhase: resources
-      - path: Sources/App/HomeView.swift
-        buildPhase: none
     info:
       path: Sources/Extension/Info.plist
       properties:
