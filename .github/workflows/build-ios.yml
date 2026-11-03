@@ -36,6 +36,11 @@ jobs:
           set -euo pipefail
           swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift -o "$RUNNER_TEMP/social-url-check"
           "$RUNNER_TEMP/social-url-check"
+      - name: Check shared media file policy
+        run: |
+          set -euo pipefail
+          swiftc ios/Sources/Shared/MediaFilePolicy.swift ios/Tests/MediaFilePolicyCheck.swift -o "$RUNNER_TEMP/media-policy-check"
+          "$RUNNER_TEMP/media-policy-check"
       - name: Generate project
         run: cd ios && xcodegen generate
       - name: Build unsigned simulator app
