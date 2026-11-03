@@ -62,4 +62,16 @@
     <string name="capturing_screen">Capture de l’écran visible…</string>
     <string name="screen_capture_failed">Échec de la capture d’écran.</string>
     <string name="capture_not_allowed">Cet appareil ou ce lecteur ne permet pas cette capture.</string>
+    <string name="social_page_opened">Page %1$s ouverte. Appuyez sur Enregistrer pour rechercher un fichier public, ou faites une capture.</string>
+    <string name="social_link_received">Lien %1$s reçu. Ouverture du contenu…</string>
+    <string name="social_link_opened">Lien %1$s ouvert. Enregistrez les fichiers partagés ou faites une capture ; le téléchargement direct peut être indisponible.</string>
+    <string name="auto_search_progress">Recherche (%1$d/%2$d), fin dans les 25 secondes…</string>
+    <string name="shared_media_not_found">Média partagé introuvable : %1$s</string>
+    <string name="social_auto_extract_unavailable">Impossible d’extraire automatiquement ce contenu de %1$s.</string>
+    <string name="instagram_media_not_identified">Page Instagram ouverte, mais aucun média unique identifié. Ouvrez le Reel ou la publication en plein écran, ou utilisez Copier le lien puis Ouvrir.</string>
+    <string name="instagram_direct_link_missing">Le contenu est visible, mais le lien direct vers la publication ou le Reel manque. Ouvrez-le en plein écran ou collez son lien en haut.</string>
+    <string name="media_found_by_method">Fichier trouvé via %1$s : vérification et enregistrement du média…</string>
+    <string name="social_direct_unavailable">%1$s : lien reconnu, mais téléchargement direct indisponible. Partagez le fichier original ou faites une capture.</string>
+    <string name="social_public_file_search">%1$s : recherche d’un fichier public disponible…</string>
+    <string name="social_media_type_found">%1$s : fichier %2$s détecté ; vérification et enregistrement…</string>
 </resources>
