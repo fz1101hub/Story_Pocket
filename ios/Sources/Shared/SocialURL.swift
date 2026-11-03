@@ -22,6 +22,22 @@ enum SocialURL {
         return url
     }
 
+    /// Accept a supported HTTPS URL or an explicit StoryPocket deep link.
+    /// Never forward arbitrary URL schemes or hosts to the embedded browser.
+    static func incoming(_ url: URL) -> URL? {
+        if let social = normalize(url.absoluteString) { return social }
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              components.scheme?.lowercased() == "storypocket",
+              components.host?.lowercased() == "open",
+              (components.path.isEmpty || components.path == "/"),
+              components.user == nil, components.password == nil,
+              components.port == nil,
+              let values = components.queryItems?.filter({ $0.name == "url" }),
+              values.count == 1,
+              let value = values.first?.value else { return nil }
+        return normalize(value)
+    }
+
     static func extract(_ text: String) -> URL? {
         if let url = normalize(text) { return url }
         let pattern = #"https://[^\s<>"']+"#
