@@ -95,6 +95,8 @@ final class ShareViewController: UIViewController {
                     self.action.isEnabled = true
                 }
             } catch {
+                // FileManager may leave a partial destination if copying fails.
+                try? FileManager.default.removeItem(at: destination)
                 DispatchQueue.main.async { [weak self] in
                     guard let self, !self.isClosing else { return }
                     self.message.text = NSLocalizedString("status.import_failed", comment: "")
