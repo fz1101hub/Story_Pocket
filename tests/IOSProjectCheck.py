@@ -46,9 +46,9 @@ require("SocialURL.extract(text)" in share,
 require("MediaFilePolicy.hasContent(file)" in app
         and "MediaFilePolicy.hasContent(file)" in share,
         "app and extension share media validation")
-require("MediaFilePolicy.isSupported" in app
+require("MediaFilePolicy.hasContent(url)" in app
         and "MediaFilePolicy.isSupported" in share,
-        "unsupported imports are rejected before saving")
+        "unsupported and oversized imports are rejected before copying")
 require("MediaFilePolicy.hasContent(temp)" in app and "MediaFilePolicy.hasContent(destination)" in share,
         "copied media is checked before Photos save")
 require("requestAuthorization(for: .addOnly)" in app
