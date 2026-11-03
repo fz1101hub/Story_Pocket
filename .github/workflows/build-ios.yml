@@ -23,6 +23,11 @@ jobs:
         run: |
           brew install xcodegen
           xcodebuild -version
+      - name: Check shared social URL parsing
+        run: |
+          set -euo pipefail
+          swiftc ios/Sources/Shared/SocialURL.swift ios/Tests/SocialURLCheck.swift -o "$RUNNER_TEMP/social-url-check"
+          "$RUNNER_TEMP/social-url-check"
       - name: Generate project
         run: cd ios && xcodegen generate
       - name: Build unsigned simulator app
