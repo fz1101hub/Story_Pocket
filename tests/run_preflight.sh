@@ -16,4 +16,5 @@ java -cp build/test OriginalVideoCheck
 node tests/MediaProbeCheck.js
 node tests/StoryMediaProbeCheck.js
 python3 tests/ProjectPreflight.py
+python3 tests/LocalizationCheck.py
 printf '\nPreflight v2.3 superato.\n'
