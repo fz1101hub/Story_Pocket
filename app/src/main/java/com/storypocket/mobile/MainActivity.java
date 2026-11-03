@@ -614,7 +614,7 @@ public final class MainActivity extends Activity {
             String normalized = SocialLinks.normalize(profileInput.getText().toString());
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard == null) throw new IllegalStateException("Appunti non disponibili");
-            clipboard.setPrimaryClip(ClipData.newPlainText("Link StoryPocket", normalized));
+            clipboard.setPrimaryClip(ClipData.newPlainText(getString(R.string.clipboard_link_label), normalized));
             toast(getString(R.string.link_copied));
         } catch (Exception e) {
             toast(getString(R.string.invalid_link_first));
