@@ -106,7 +106,14 @@ final class ShareViewController: UIViewController {
                     return
                 }
                 guard MediaFilePolicy.hasAcceptableSize(temporaryURL) else {
-                    throw NSError(domain: NSCocoaErrorDomain, code: NSFileReadCorruptFileError)
+                    let tooLarge = MediaFilePolicy.isTooLarge(temporaryURL)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self, !self.isClosing else { return }
+                        self.message.text = NSLocalizedString(
+                            tooLarge ? "status.file_too_large" : "status.import_failed", comment: ""
+                        )
+                    }
+                    return
                 }
                 try FileManager.default.copyItem(at: temporaryURL, to: destination)
                 guard MediaFilePolicy.hasContent(destination) else {
