@@ -62,4 +62,16 @@
     <string name="capturing_screen">Capturing the visible screen…</string>
     <string name="screen_capture_failed">Screen capture failed.</string>
     <string name="capture_not_allowed">The device or player does not allow this capture.</string>
+    <string name="social_page_opened">%1$s page opened. Tap Save to search for a public file, or use Screenshot.</string>
+    <string name="social_link_received">%1$s link received. Opening content…</string>
+    <string name="social_link_opened">%1$s link opened. Save shared files or use Screenshot; direct download may be unavailable.</string>
+    <string name="auto_search_progress">Searching (%1$d/%2$d), ending within 25 seconds…</string>
+    <string name="shared_media_not_found">Shared media not found: %1$s</string>
+    <string name="social_auto_extract_unavailable">Cannot automatically extract this content from %1$s.</string>
+    <string name="instagram_media_not_identified">Instagram page opened, but no single media item could be identified. Open the Reel/Post full screen or use Copy link and Open.</string>
+    <string name="instagram_direct_link_missing">Content is visible, but the direct Post/Reel link is missing. Open it full screen or paste its link above.</string>
+    <string name="media_found_by_method">File found via %1$s: checking and saving media…</string>
+    <string name="social_direct_unavailable">%1$s: link recognized, but direct download is unavailable. Share the original file or use Screenshot.</string>
+    <string name="social_public_file_search">%1$s: searching for an available public file…</string>
+    <string name="social_media_type_found">%1$s: %2$s file detected; checking and saving…</string>
 </resources>
