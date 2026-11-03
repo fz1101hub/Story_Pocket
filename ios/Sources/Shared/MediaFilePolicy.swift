@@ -16,8 +16,8 @@ enum MediaFilePolicy {
         return images.contains(ext) || videos.contains(ext)
     }
 
-    static func hasContent(_ file: URL) -> Bool {
-        guard file.isFileURL, isSupported(file),
+    static func hasAcceptableSize(_ file: URL) -> Bool {
+        guard file.isFileURL,
               let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
               let kind = attributes[.type] as? FileAttributeType,
               kind == .typeRegular,
@@ -25,5 +25,9 @@ enum MediaFilePolicy {
               bytes.int64Value > 0,
               bytes.int64Value <= maximumFileBytes else { return false }
         return true
+    }
+
+    static func hasContent(_ file: URL) -> Bool {
+        isSupported(file) && hasAcceptableSize(file)
     }
 }
