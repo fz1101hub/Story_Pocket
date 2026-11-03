@@ -37,7 +37,11 @@ struct HomeView: View {
                         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
 
                     HStack {
-                        Button("home.paste") { link = UIPasteboard.general.string ?? "" }
+                        Button("home.paste") {
+                            let pasteboard = UIPasteboard.general
+                            link = pasteboard.url?.absoluteString ?? pasteboard.string ?? ""
+                            status = ""
+                        }
                         Spacer()
                         Button("home.open") {
                             if let url = SocialURL.extract(link) {
