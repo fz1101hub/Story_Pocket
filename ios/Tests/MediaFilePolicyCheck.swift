@@ -29,6 +29,15 @@ struct MediaFilePolicyCheck {
         try FileManager.default.createDirectory(at: fakeImageDirectory, withIntermediateDirectories: false)
         precondition(!MediaFilePolicy.hasContent(fakeImageDirectory), "Directory accepted as media")
 
+        let oversized = directory.appendingPathComponent("oversized.mp4")
+        try Data([0x01]).write(to: oversized)
+        let handle = try FileHandle(forWritingTo: oversized)
+        try handle.truncate(atOffset: UInt64(MediaFilePolicy.maximumFileBytes + 1))
+        try handle.close()
+        precondition(!MediaFilePolicy.hasAcceptableSize(oversized), "Oversized file accepted")
+        precondition(!MediaFilePolicy.hasContent(oversized), "Oversized media accepted")
+        precondition(MediaFilePolicy.hasAcceptableSize(directory.appendingPathComponent("sample.mp4")))
+
         precondition(MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.MP4")))
         precondition(!MediaFilePolicy.isVideo(directory.appendingPathComponent("sample.jpg")))
         precondition(!MediaFilePolicy.hasContent(URL(string: "https://example.org/video.mp4")!))
