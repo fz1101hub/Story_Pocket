@@ -20,6 +20,10 @@ targets:
       path: Sources/App/Info.plist
       properties:
         CFBundleDisplayName: StoryPocket
+        CFBundleURLTypes:
+          - CFBundleURLName: com.storypocket.ios.links
+            CFBundleURLSchemes:
+              - storypocket
         NSPhotoLibraryAddUsageDescription: "StoryPocket saves media you explicitly choose."
         UILaunchScreen: {}
     settings:
