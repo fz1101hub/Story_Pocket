@@ -98,5 +98,5 @@
     <string name="shared_link_not_open">Le lien partagé n’est pas encore ouvert</string>
     <string name="content_not_open">Le contenu n’est pas ouvert</string>
     <string name="waiting_photo_or_video_cover">Attente pour distinguer une photo de la miniature vidéo</string>
-    <string name="screenshot_photos_only_hint"> Essayez Capture d’écran uniquement pour les photos.</string>
+    <string name="screenshot_photos_only_hint">Essayez Capture d’écran uniquement pour les photos.</string>
 </resources>
