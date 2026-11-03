@@ -93,6 +93,9 @@ final class ShareViewController: UIViewController {
                     return
                 }
                 try FileManager.default.copyItem(at: temporaryURL, to: destination)
+                guard MediaFilePolicy.hasContent(destination) else {
+                    throw NSError(domain: NSCocoaErrorDomain, code: NSFileReadCorruptFileError)
+                }
                 DispatchQueue.main.async { [weak self] in
                     guard let self, !self.isClosing else {
                         try? FileManager.default.removeItem(at: destination)
