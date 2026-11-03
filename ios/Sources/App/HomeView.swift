@@ -62,6 +62,15 @@ struct HomeView: View {
                 .padding()
             }
             .navigationTitle("app.title")
+            .onOpenURL { incoming in
+                if let social = SocialURL.incoming(incoming) {
+                    link = social.absoluteString
+                    status = ""
+                    selectedURL = social
+                } else {
+                    status = NSLocalizedString("status.invalid_link", comment: "")
+                }
+            }
             .sheet(item: $selectedURL) { url in
                 NavigationStack {
                     BrowserView(url: url)
