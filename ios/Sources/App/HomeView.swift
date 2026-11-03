@@ -84,7 +84,8 @@ struct HomeView: View {
                 switch result {
                 case .failure(let error):
                     // Dismissing the document picker is not an import failure.
-                    if (error as NSError).code != NSUserCancelledError {
+                    let nsError = error as NSError
+                    if nsError.domain != NSCocoaErrorDomain || nsError.code != NSUserCancelledError {
                         status = NSLocalizedString("status.import_failed", comment: "")
                     }
                 case .success(let url):
