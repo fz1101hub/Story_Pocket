@@ -7,6 +7,7 @@ import Photos
 final class ShareViewController: UIViewController {
     private let message = UILabel()
     private let action = UIButton(type: .system)
+    private let done = UIButton(type: .system)
     private var pendingURL: URL?
     private var pendingFile: URL?
     private var isSaving = false
@@ -20,7 +21,6 @@ final class ShareViewController: UIViewController {
         action.setTitle(NSLocalizedString("share.save", comment: ""), for: .normal)
         action.isEnabled = false
         action.addTarget(self, action: #selector(performAction), for: .touchUpInside)
-        let done = UIButton(type: .system)
         done.setTitle(NSLocalizedString("common.done", comment: ""), for: .normal)
         done.addTarget(self, action: #selector(close), for: .touchUpInside)
         let stack = UIStackView(arrangedSubviews: [message, action, done])
@@ -112,12 +112,14 @@ final class ShareViewController: UIViewController {
         }
         guard let file = pendingFile else { return }
         action.isEnabled = false
+        done.isEnabled = false
         isSaving = true
         message.text = NSLocalizedString("share.saving", comment: "")
         ExtensionPhotoSaver.save(file) { [weak self] success in
             DispatchQueue.main.async {
                 guard let self else { return }
                 self.isSaving = false
+                self.done.isEnabled = true
                 if success {
                     try? FileManager.default.removeItem(at: file)
                     self.pendingFile = nil
