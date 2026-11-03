@@ -12,4 +12,4 @@ Italian, English, French, German and Spanish in `Resources/*.lproj/Localizable.s
 
 ## Scope and safety
 
-The current iOS prototype does **not** automatically download social media, bypass authentication, or access private posts. A Share Extension and more extensive media handling are future work. Device distribution requires signing and provisioning; never commit credentials.
+The current iOS prototype does **not** automatically download social media, bypass authentication, or access private posts. The Share Extension already accepts user-selected files and social links; it does not fetch remote media. Device distribution requires signing and provisioning; never commit credentials.
