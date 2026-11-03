@@ -117,6 +117,14 @@ def main():
     for source in swift_sources:
         swift = source.read_text(encoding="utf-8")
         swift_keys.update(re.findall(r'NSLocalizedString\s*\(\s*"([^"]+)"', swift))
+    # SwiftUI uses LocalizedStringKey implicitly in these literal UI initializers.
+    # Check them as well; NSLocalizedString-only scans miss missing UI translations.
+    implicit_pattern = re.compile(
+        r'\\b(?:Text|TextField|Button|Label|navigationTitle)\\s*\\(\\s*"([^"]+)"'
+    )
+    for source in swift_sources:
+        swift = source.read_text(encoding="utf-8")
+        swift_keys.update(implicit_pattern.findall(swift))
     missing_ios = sorted(swift_keys - ios["it"].keys())
     if missing_ios:
         raise ValueError(f"iOS: undefined NSLocalizedString keys {missing_ios}")
