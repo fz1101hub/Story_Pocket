@@ -40,6 +40,20 @@ struct SocialURLCheck {
         expectIncoming("storypocket://open?URL=https%3A%2F%2Finstagram.com%2Fp", nil)
         expectIncoming("storypocket://evil?url=https%3A%2F%2Finstagram.com%2Fp", nil)
         expectIncoming("storypocket://open/other?url=https%3A%2F%2Finstagram.com%2Fp", nil)
+        func expectBrowser(_ input: String, _ allowed: Bool) {
+            guard let url = URL(string: input) else { fatalError("Invalid browser test URL") }
+            precondition(SocialURL.allowsBrowserNavigation(url) == allowed)
+        }
+        expectBrowser("https://instagram.com/p/abc", true)
+        expectBrowser("https://cdn.example.org/video.mp4", true)
+        expectBrowser("https://example.org:443/path", true)
+        expectBrowser("https://example.org:8443/path", false)
+        expectBrowser("https://user:pass@example.org/path", false)
+        expectBrowser("http://instagram.com/p/abc", false)
+        expectBrowser("javascript:alert(1)", false)
+        expectBrowser("file:///private/tmp/test.jpg", false)
+        expectBrowser("about:blank", true)
+        expectBrowser("about:srcdoc", false)
         print("SocialURL checks passed")
     }
 }
