@@ -45,4 +45,21 @@
     <string name="open_instagram_page">Apri una pagina Instagram nel browser di StoryPocket.</string>
     <string name="media_found_saving">Contenuto individuato: provo il salvataggio…</string>
     <string name="invalid_media_link">Il link del media non è valido.</string>
+    <string name="identify_visible_media">Identifico il Post, Reel o Story attualmente visibile…</string>
+    <string name="instagram_no_response">Instagram non ha risposto: apri il contenuto e riprova.</string>
+    <string name="search_visible_media">Ricerca del media visibile (massimo 6 secondi)…</string>
+    <string name="player_timeout">Player non ha risposto entro 6 secondi. Riprova o usa Screenshot.</string>
+    <string name="story_page_changed">La pagina è cambiata: ripeti il salvataggio sulla Story desiderata.</string>
+    <string name="auto_download_started">Media trovato: download automatico in corso…</string>
+    <string name="direct_download_unavailable">Il contenuto non espone un download diretto.</string>
+    <string name="instagram_metadata_fallback">Player senza MP4: provo i dati originali del Reel/Post su Instagram…</string>
+    <string name="story_changed">La Story è cambiata: riapri quella che vuoi salvare.</string>
+    <string name="story_metadata_search">Story identificata: provo i dati originali Instagram (non la copertina)…</string>
+    <string name="download_timeout">Download interrotto: superati 45 secondi.</string>
+    <string name="instagram_download_timeout">Tempo scaduto: Instagram non ha completato il download.</string>
+    <string name="open_social_to_capture">Apri un contenuto social da acquisire.</string>
+    <string name="story_not_ready">La Story non è ancora pronta.</string>
+    <string name="capturing_screen">Acquisizione della schermata visibile…</string>
+    <string name="screen_capture_failed">Acquisizione schermata non riuscita.</string>
+    <string name="capture_not_allowed">Il dispositivo o il player non permette questa acquisizione.</string>
 </resources>
