@@ -21,3 +21,4 @@
 "share.copy" = "Copier le lien";
 "share.copied" = "Lien copié.";
 "share.saving" = "Enregistrement…";
+"status.file_too_large" = "Ce fichier dépasse la limite de 120 Mio.";
