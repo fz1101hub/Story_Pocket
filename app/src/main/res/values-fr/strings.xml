@@ -25,4 +25,10 @@
     <string name="blocked_external_link">Lien externe bloqué. Utilisez Copier pour l’ouvrir séparément.</string>
     <string name="blocked_link_type">Type de lien non pris en charge : navigation bloquée.</string>
     <string name="page_load_failed">Impossible de charger la page du réseau social. Vérifiez la connexion et votre compte.</string>
+    <string name="social_http_unavailable">Page du réseau social indisponible (HTTP %1$d). Le navigateur ne peut pas afficher cette vidéo.</string>
+    <string name="instagram_content_opened">Contenu Instagram ouvert : tentative d\'enregistrement du média visible…</string>
+    <string name="instagram_login_required">Connexion à Instagram requise. Connectez-vous et partagez à nouveau le contenu.</string>
+    <string name="shared_content_waiting">En attente du contenu partagé. S\'il ne s\'ouvre pas, utilisez Copier le lien.</string>
+    <string name="content_opened_save">Contenu ouvert : appuyez sur Enregistrer photo/vidéo ou Capture d\'écran.</string>
+    <string name="share_to_start">Partagez un lien ou un fichier multimédia pour commencer.</string>
 </resources>

@@ -25,4 +25,10 @@
     <string name="blocked_external_link">External link blocked. Use Copy to open it separately.</string>
     <string name="blocked_link_type">Unsupported link type: navigation blocked.</string>
     <string name="page_load_failed">The social page could not be loaded. Check your connection and sign-in.</string>
+    <string name="social_http_unavailable">Social page unavailable (HTTP %1$d). The browser cannot display this video.</string>
+    <string name="instagram_content_opened">Instagram content opened: trying to save the visible media…</string>
+    <string name="instagram_login_required">Instagram sign-in required. Sign in and share the content again.</string>
+    <string name="shared_content_waiting">Waiting for shared content. If it does not open, use Copy link.</string>
+    <string name="content_opened_save">Content opened: tap Save photo/video or Screenshot.</string>
+    <string name="share_to_start">Share a social link or media file to get started.</string>
 </resources>

@@ -353,8 +353,7 @@ public final class MainActivity extends Activity {
                     int code = errorResponse.getStatusCode();
                     if (code == 401 || code == 403 || code == 429 || code >= 500) {
                         cancelAutoDownload();
-                        status("Il social non ha reso disponibile la pagina (HTTP " + code + "). " +
-                            "Non posso scaricare un video che il browser non può visualizzare.");
+                        status(getString(R.string.social_http_unavailable, code));
                     }
                 }
             }
@@ -363,21 +362,21 @@ public final class MainActivity extends Activity {
                     if (SystemClock.elapsedRealtime() >= autoDeadline) {
                         autoTimeout.run();
                     } else if (TargetParser.matchesSharedContent(url, pendingSharedContent)) {
-                        status("Contenuto Instagram aperto: provo a salvare il media visibile…");
+                        status(getString(R.string.instagram_content_opened));
                         scheduleAutoDownload(1600);
                     } else if (url.contains("/accounts/login")) {
                         cancelAutoDownload();
-                        status("Accesso Instagram richiesto. Accedi e condividi nuovamente il contenuto.");
+                        status(getString(R.string.instagram_login_required));
                     } else {
-                        status("Attendo il contenuto condiviso. Se non si apre, usa Copia link.");
+                        status(getString(R.string.shared_content_waiting));
                     }
                 } else if (TargetParser.isMediaPage(url)) {
-                    status("Contenuto aperto: premi Salva foto/video o Screenshot.");
+                    status(getString(R.string.content_opened_save));
                 } else if (SocialLinks.isSupported(url) && !SocialLinks.isInstagram(url)) {
                     status("Pagina " + SocialLinks.platform(url) + " aperta. Premi Salva per cercare un file pubblico, oppure Screenshot.");
                     setSourceNotice(url);
                 } else {
-                    status("Condividi un link o un file da un social per iniziare.");
+                    status(getString(R.string.share_to_start));
                 }
             }
         });
