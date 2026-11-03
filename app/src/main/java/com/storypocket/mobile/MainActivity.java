@@ -777,12 +777,12 @@ public final class MainActivity extends Activity {
     private void resolveVisibleMediaPage(String browserPage, boolean onlyVideo) {
         final int nonce = ++manualProbeNonce;
         saving(true);
-        status("Identifico il Post, Reel o Story attualmente visibile…");
+        status(getString(R.string.identify_visible_media));
         main.postDelayed(() -> {
             if (nonce == manualProbeNonce && isSaving) {
                 manualProbeNonce++;
                 saving(false);
-                status("Instagram non ha risposto: apri il contenuto e riprova.");
+                status(getString(R.string.instagram_no_response));
             }
         }, AUTO_PROBE_MS);
         browser.evaluateJavascript(MEDIA_CONTEXT_SCRIPT, raw -> {
@@ -821,12 +821,12 @@ public final class MainActivity extends Activity {
         if (!automatic) {
             saving(true);
             manualNonce = ++manualProbeNonce;
-            status("Ricerca del media visibile (massimo 6 secondi)…");
+            status(getString(R.string.search_visible_media));
             main.postDelayed(() -> {
                 if (manualNonce == manualProbeNonce && isSaving) {
                     manualProbeNonce++;
                     saving(false);
-                    status("Player non ha risposto entro 6 secondi. Riprova o usa Screenshot.");
+                    status(getString(R.string.player_timeout));
                 }
             }, AUTO_PROBE_MS);
         } else {
@@ -1004,7 +1004,7 @@ public final class MainActivity extends Activity {
             }
             if (!automatic && !browserPage.equals(browser.getUrl())) {
                 saving(false);
-                status("La pagina è cambiata: ripeti il salvataggio sulla Story desiderata.");
+                status(getString(R.string.story_page_changed));
                 return;
             }
             try {
@@ -1042,7 +1042,7 @@ public final class MainActivity extends Activity {
                 String userAgent = browser.getSettings().getUserAgentString();
                 if (automatic) {
                     cancelAutoDownload(); // Un solo download per ogni condivisione.
-                    status("Media trovato: download automatico in corso…");
+                    status(getString(R.string.auto_download_started));
                 } else {
                     manualProbeNonce++; // Invalida il watchdog della ricerca JS.
                 }
@@ -1061,7 +1061,7 @@ public final class MainActivity extends Activity {
                         tryInstagramStoryMetadata(page, browserPage, onlyVideo);
                     } else {
                         saving(false);
-                        status("Il contenuto non espone un download diretto.");
+                        status(getString(R.string.direct_download_unavailable));
                         toast(e.getMessage() + " Prova Screenshot solo per le foto.");
                     }
                 }
@@ -1074,7 +1074,7 @@ public final class MainActivity extends Activity {
         if (!browserPage.equals(browser.getUrl())) { saving(false); return; }
         String cookie = CookieManager.getInstance().getCookie("https://www.instagram.com/");
         String userAgent = browser.getSettings().getUserAgentString();
-        status("Player senza MP4: provo i dati originali del Reel/Post su Instagram…");
+        status(getString(R.string.instagram_metadata_fallback));
         int token = startTransfer();
         io.execute(() -> {
             try {
@@ -1100,12 +1100,12 @@ public final class MainActivity extends Activity {
     private void tryInstagramStoryMetadata(String page, String browserPage, boolean videoOnly) {
         if (!browserPage.equals(browser.getUrl()) || !TargetParser.isDirectStoryUrl(page)) {
             saving(false);
-            status("La Story è cambiata: riapri quella che vuoi salvare.");
+            status(getString(R.string.story_changed));
             return;
         }
         String cookie = CookieManager.getInstance().getCookie("https://www.instagram.com/");
         String userAgent = browser.getSettings().getUserAgentString();
-        status("Story identificata: provo i dati originali Instagram (non la copertina)…");
+        status(getString(R.string.story_metadata_search));
         int token = startTransfer();
         io.execute(() -> {
             try {
@@ -1136,8 +1136,8 @@ public final class MainActivity extends Activity {
         main.postDelayed(() -> {
             if (token == transferGeneration) {
                 cancelTransfer();
-                status("Download interrotto: superati 45 secondi.");
-                toast("Tempo scaduto: Instagram non ha completato il download.");
+                status(getString(R.string.download_timeout));
+                toast(getString(R.string.instagram_download_timeout));
             }
         }, DOWNLOAD_TOTAL_MS);
         return token;
@@ -1335,15 +1335,15 @@ public final class MainActivity extends Activity {
     private void saveScreenshot() {
         if (isSaving) return;
         if (!TargetParser.isMediaPage(browser.getUrl()) && !SocialLinks.isSupported(browser.getUrl())) {
-            toast("Apri un contenuto social da acquisire.");
+            toast(getString(R.string.open_social_to_capture));
             return;
         }
         if (browser.getWidth() <= 0 || browser.getHeight() <= 0) {
-            toast("La Story non è ancora pronta.");
+            toast(getString(R.string.story_not_ready));
             return;
         }
         saving(true);
-        status("Acquisizione della schermata visibile…");
+        status(getString(R.string.capturing_screen));
         int[] position = new int[2];
         browser.getLocationInWindow(position);
         int width = browser.getWidth();
@@ -1354,8 +1354,8 @@ public final class MainActivity extends Activity {
             if (result != PixelCopy.SUCCESS) {
                 bitmap.recycle();
                 saving(false);
-                status("Acquisizione schermata non riuscita.");
-                toast("Il dispositivo o il player non permette questa acquisizione.");
+                status(getString(R.string.screen_capture_failed));
+                toast(getString(R.string.capture_not_allowed));
                 return;
             }
             String username = TargetParser.isInstagramUrl(browser.getUrl()) ?
