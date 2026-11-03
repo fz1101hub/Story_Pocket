@@ -124,4 +124,5 @@
     <string name="media_http_error">Die Plattform/CDN antwortete mit HTTP %1$d.</string>
     <string name="media_over_limit">Das Medium überschreitet die Grenze von 120 MB.</string>
     <string name="media_stream_over_limit">Das Medium überschreitet 120 MB.</string>
+    <string name="clipboard_link_label">StoryPocket-Link</string>
 </resources>
