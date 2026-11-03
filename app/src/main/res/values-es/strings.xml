@@ -45,4 +45,21 @@
     <string name="open_instagram_page">Abre una página de Instagram en el navegador de StoryPocket.</string>
     <string name="media_found_saving">Contenido encontrado: intentando guardar…</string>
     <string name="invalid_media_link">El enlace multimedia no es válido.</string>
+    <string name="identify_visible_media">Identificando la publicación, el Reel o la Story visible…</string>
+    <string name="instagram_no_response">Instagram no respondió: abre el contenido e inténtalo de nuevo.</string>
+    <string name="search_visible_media">Buscando el archivo visible (máximo 6 segundos)…</string>
+    <string name="player_timeout">El reproductor no respondió en 6 segundos. Reinténtalo o usa Captura de pantalla.</string>
+    <string name="story_page_changed">La página ha cambiado: vuelve a guardar desde la Story deseada.</string>
+    <string name="auto_download_started">Archivo encontrado: descarga automática en curso…</string>
+    <string name="direct_download_unavailable">Este contenido no ofrece descarga directa.</string>
+    <string name="instagram_metadata_fallback">El reproductor no ofrece MP4: buscando metadatos originales del Reel o publicación…</string>
+    <string name="story_changed">La Story ha cambiado: vuelve a abrir la que quieres guardar.</string>
+    <string name="story_metadata_search">Story identificada: buscando datos originales de Instagram (no la portada)…</string>
+    <string name="download_timeout">Descarga interrumpida: se superaron los 45 segundos.</string>
+    <string name="instagram_download_timeout">Tiempo agotado: Instagram no completó la descarga.</string>
+    <string name="open_social_to_capture">Abre contenido de una red social para capturarlo.</string>
+    <string name="story_not_ready">La Story aún no está lista.</string>
+    <string name="capturing_screen">Capturando la pantalla visible…</string>
+    <string name="screen_capture_failed">No se pudo capturar la pantalla.</string>
+    <string name="capture_not_allowed">El dispositivo o reproductor no permite esta captura.</string>
 </resources>
