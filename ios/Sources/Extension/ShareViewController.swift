@@ -74,8 +74,9 @@ final class ShareViewController: UIViewController {
     private func receiveFile(_ provider: NSItemProvider, type: UTType) {
         provider.loadFileRepresentation(forTypeIdentifier: type.identifier) { [weak self] temporaryURL, _ in
             guard let temporaryURL else {
-                DispatchQueue.main.async {
-                    self?.message.text = NSLocalizedString("status.import_failed", comment: "")
+                DispatchQueue.main.async { [weak self] in
+                    guard let self, !self.isClosing else { return }
+                    self.message.text = NSLocalizedString("status.import_failed", comment: "")
                 }
                 return
             }
@@ -94,8 +95,9 @@ final class ShareViewController: UIViewController {
                     self.action.isEnabled = true
                 }
             } catch {
-                DispatchQueue.main.async {
-                    self?.message.text = NSLocalizedString("status.import_failed", comment: "")
+                DispatchQueue.main.async { [weak self] in
+                    guard let self, !self.isClosing else { return }
+                    self.message.text = NSLocalizedString("status.import_failed", comment: "")
                 }
             }
         }
