@@ -18,7 +18,9 @@ struct SocialURLCheck {
         expect("https://user:password@instagram.com/post", nil)
         expect("https://instagram.com:8080/post", nil)
         expect("https://instagram.com/post#fragment", nil)
-        expect("https://instagram.com/a b", nil)
+        // Extraction intentionally accepts a URL token before surrounding prose.
+        precondition(SocialURL.normalize("https://instagram.com/a b") == nil)
+        precondition(SocialURL.normalize("https://instagram.com/a\\npath") == nil)
         expect("https://instagram.com/a\\npath", "https://instagram.com/a")
         expect("  https://instagram.com/p/abc  ", "https://instagram.com/p/abc")
         expect("https://instagram.com:443/post", "https://instagram.com:443/post")
