@@ -37,6 +37,8 @@ require("SocialURL.normalize(url.absoluteString)" in browser,
         "browser validates initial social URL")
 require("SocialURL.incoming(incoming)" in app,
         "main app validates incoming deep links")
+require("pasteboard.url?.absoluteString" in app,
+        "main app accepts URL-typed clipboard items")
 require("SocialURL.extract(link)" in app,
         "main app validates pasted social links")
 require("SocialURL.extract(text)" in share,
