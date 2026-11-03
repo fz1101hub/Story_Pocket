@@ -1030,10 +1030,10 @@ public final class MainActivity extends Activity {
                     return;
                 }
                 if ("video".equals(type) && VideoUrlPolicy.score(url) == 0) {
-                    throw new Exception("La sorgente disponibile non e' un file video originale completo.");
+                    throw new Exception(getString(R.string.video_original_unavailable));
                 }
                 if (!TargetParser.isTrustedMediaUrl(url)) {
-                    throw new Exception("Instagram sta usando un formato o CDN non supportato.");
+                    throw new Exception(getString(R.string.video_cdn_unsupported));
                 }
                 String filenameTag = TargetParser.fileTag(page);
                 String userAgent = browser.getSettings().getUserAgentString();
@@ -1147,9 +1147,9 @@ public final class MainActivity extends Activity {
         saving(false);
     }
 
-    private static void ensureActive(int token, int activeToken, long deadline) throws IOException {
-        if (token != activeToken) throw new IOException("Download annullato.");
-        if (SystemClock.elapsedRealtime() > deadline) throw new IOException("Tempo massimo di download superato.");
+    private void ensureActive(int token, int activeToken, long deadline) throws IOException {
+        if (token != activeToken) throw new IOException(getString(R.string.download_cancelled));
+        if (SystemClock.elapsedRealtime() > deadline) throw new IOException(getString(R.string.download_timeout));
     }
 
     private void finishTransfer(int token, String message, String detail) {
@@ -1173,7 +1173,7 @@ public final class MainActivity extends Activity {
             while (true) {
                 ensureActive(token, transferGeneration, deadline);
                 if (!TargetParser.isTrustedMediaUrl(currentUrl) && !SocialLinks.isTrustedMedia(currentUrl))
-                    throw new IOException("Host del media non attendibile.");
+                    throw new IOException(getString(R.string.media_host_untrusted));
                 conn = (HttpURLConnection) new URL(currentUrl).openConnection();
                 activeConnection = conn;
                 conn.setInstanceFollowRedirects(false);
@@ -1190,19 +1190,19 @@ public final class MainActivity extends Activity {
                 ensureActive(token, transferGeneration, deadline);
                 if (code == 301 || code == 302 || code == 303 || code == 307 || code == 308) {
                     String location = conn.getHeaderField("Location");
-                    if (++redirects > 3 || location == null) throw new IOException("Troppi reindirizzamenti.");
+                    if (++redirects > 3 || location == null) throw new IOException(getString(R.string.too_many_redirects));
                     currentUrl = new URL(new URL(currentUrl), location).toString();
                     conn.disconnect();
                     activeConnection = null;
                     conn = null;
                     continue;
                 }
-                if (code == 206) throw new IOException("Il social ha inviato solo un segmento (HTTP 206), non il file completo.");
-                if (code != 200) throw new IOException("Il social/CDN ha risposto con HTTP " + code + ".");
+                if (code == 206) throw new IOException(getString(R.string.partial_media_response));
+                if (code != 200) throw new IOException(getString(R.string.media_http_error, code));
                 break;
             }
             long length = conn.getContentLengthLong();
-            if (length > MAX_FILE_BYTES) throw new IOException("Il media supera il limite di 120 MB.");
+            if (length > MAX_FILE_BYTES) throw new IOException(getString(R.string.media_over_limit));
             try (BufferedInputStream input = new BufferedInputStream(conn.getInputStream())) {
                 input.mark(32);
                 byte[] first = new byte[24];
@@ -1237,7 +1237,7 @@ public final class MainActivity extends Activity {
                         n = input.read(buffer);
                         if (n == -1) break;
                         total += n;
-                        if (total > MAX_FILE_BYTES) throw new IOException("Il media supera 120 MB.");
+                        if (total > MAX_FILE_BYTES) throw new IOException(getString(R.string.media_stream_over_limit));
                         output.write(buffer, 0, n);
                         long now = SystemClock.elapsedRealtime();
                         if (now - lastUpdate > 1800) {
