@@ -41,6 +41,7 @@ struct HomeView: View {
                         Spacer()
                         Button("home.open") {
                             if let url = SocialURL.extract(link) {
+                                status = ""
                                 selectedURL = url
                             } else {
                                 status = NSLocalizedString("status.invalid_link", comment: "")
