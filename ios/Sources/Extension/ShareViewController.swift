@@ -10,6 +10,7 @@ final class ShareViewController: UIViewController {
     private var pendingURL: URL?
     private var pendingFile: URL?
     private var isSaving = false
+    private var isClosing = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ final class ShareViewController: UIViewController {
     private func receiveLink(_ text: String) {
         let url = SocialURL.extract(text)
         DispatchQueue.main.async {
+            guard !self.isClosing else { return }
             guard let url else {
                 self.message.text = NSLocalizedString("status.invalid_link", comment: "")
                 return
@@ -82,10 +84,14 @@ final class ShareViewController: UIViewController {
                 .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             do {
                 try FileManager.default.copyItem(at: temporaryURL, to: destination)
-                DispatchQueue.main.async {
-                    self?.pendingFile = destination
-                    self?.message.text = NSLocalizedString("share.ready_file", comment: "")
-                    self?.action.isEnabled = true
+                DispatchQueue.main.async { [weak self] in
+                    guard let self, !self.isClosing else {
+                        try? FileManager.default.removeItem(at: destination)
+                        return
+                    }
+                    self.pendingFile = destination
+                    self.message.text = NSLocalizedString("share.ready_file", comment: "")
+                    self.action.isEnabled = true
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -124,7 +130,8 @@ final class ShareViewController: UIViewController {
 
     @objc private func close() {
         // PhotoKit may still be reading the temporary file: do not delete it mid-save.
-        guard !isSaving else { return }
+        guard !isSaving, !isClosing else { return }
+        isClosing = true
         if let pendingFile { try? FileManager.default.removeItem(at: pendingFile) }
         extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
     }
