@@ -1,15 +1,22 @@
-# StoryPocket — Android
+# StoryPocket — Android e iOS
 
 **StoryPocket** è un'app Android per ricevere contenuti condivisi dai social network,
 aprire il collegamento in un browser interno e salvare i media **quando la piattaforma
 rende disponibile un file accessibile e il salvataggio è autorizzato**.
 
 **Versione attuale:** `2.3.0-beta` (`versionCode 14`) · **Android:** 10+ (API 29+) ·
-**Lingua:** italiano · **Stato:** beta sperimentale.
+**Lingue:** italiano, inglese, francese, tedesco e spagnolo · **Stato:** beta sperimentale.
 
 > Non è un prodotto ufficiale di Instagram, Meta, TikTok, Reddit o altre piattaforme.
 > Il riconoscimento di un link **non** garantisce il download. Usa StoryPocket solo
 > per contenuti che hai il diritto di conservare.
+
+La versione **Android** offre i flussi di riconoscimento e download descritti sotto.
+È presente anche un **prototipo iOS** separato, con SwiftUI, navigazione
+HTTPS, importazione di foto/video e Share Extension: salva soltanto i file
+scelti dall'utente e **non** scarica automaticamente media dai social.
+Per build e limiti specifici consulta [StoryPocket iOS](ios/README.md).
+La build iOS per simulatore non equivale a un IPA firmato per iPhone.
 
 ## Funzionamento
 
