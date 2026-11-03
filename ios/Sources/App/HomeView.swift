@@ -94,6 +94,8 @@ struct HomeView: View {
                         }
                     } catch {
                         if access { url.stopAccessingSecurityScopedResource() }
+                        // A failed copy can leave a partial temporary file behind.
+                        try? FileManager.default.removeItem(at: temp)
                         status = NSLocalizedString("status.import_failed", comment: "")
                     }
                 }
