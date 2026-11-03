@@ -373,7 +373,7 @@ public final class MainActivity extends Activity {
                 } else if (TargetParser.isMediaPage(url)) {
                     status(getString(R.string.content_opened_save));
                 } else if (SocialLinks.isSupported(url) && !SocialLinks.isInstagram(url)) {
-                    status("Pagina " + SocialLinks.platform(url) + " aperta. Premi Salva per cercare un file pubblico, oppure Screenshot.");
+                    status(getString(R.string.social_page_opened, SocialLinks.platform(url)));
                     setSourceNotice(url);
                 } else {
                     status(getString(R.string.share_to_start));
@@ -437,13 +437,13 @@ public final class MainActivity extends Activity {
         profileInput.setText(target);
         setSourceNotice(target);
         if (!SocialLinks.isInstagram(target)) {
-            status("Link " + SocialLinks.platform(target) + " ricevuto. Apro il contenuto…");
+            status(getString(R.string.social_link_received, SocialLinks.platform(target)));
             browser.loadUrl(target);
             if (SocialLinks.supportsPublicResolver(target)) {
                 // Run a bounded public API lookup, never upload cookies or credentials.
                 attemptSocialDownload(target, false);
             } else {
-                status("Link " + SocialLinks.platform(target) + " aperto. Salva file condivisi o usa Screenshot; il download diretto può non essere disponibile.");
+                status(getString(R.string.social_link_opened, SocialLinks.platform(target)));
             }
             return true;
         }
@@ -523,7 +523,7 @@ public final class MainActivity extends Activity {
         autoProbeInFlight = true;
         int nonce = ++probeNonce;
         int generation = shareGeneration;
-        status("Ricerca (" + autoAttempts + "/" + AUTO_MAX_ATTEMPTS + "), termine entro 25 secondi…");
+        status(getString(R.string.auto_search_progress, autoAttempts, AUTO_MAX_ATTEMPTS));
         main.postDelayed(() -> {
             if (generation == shareGeneration && nonce == probeNonce && autoProbeInFlight) {
                 autoScanFailed(generation, "Il player non ha risposto");
@@ -546,7 +546,7 @@ public final class MainActivity extends Activity {
                 tryInstagramStoryMetadata(story, browserPage, false);
             } else {
                 status(getString(R.string.auto_no_media));
-                toast("Non ho trovato il media condiviso: " + detail);
+                toast(getString(R.string.shared_media_not_found, detail));
             }
         } else {
             scheduleAutoDownload(1500);
@@ -656,14 +656,13 @@ public final class MainActivity extends Activity {
         String platform = SocialLinks.platform(socialPage);
         if (platform == null || SocialLinks.isInstagram(socialPage)) return;
         if (!SocialLinks.supportsPublicResolver(socialPage)) {
-            status(platform + ": il link è riconosciuto, ma il download diretto non è disponibile. "
-                + "Puoi condividere il file originale oppure usare Screenshot.");
-            toast("Non posso estrarre automaticamente questo contenuto da " + platform + ".");
+            status(getString(R.string.social_direct_unavailable, platform));
+            toast(getString(R.string.social_auto_extract_unavailable, platform));
             return;
         }
         int token = startTransfer();
         String userAgent = browser.getSettings().getUserAgentString();
-        status(platform + ": cerco un file pubblico disponibile…");
+        status(getString(R.string.social_public_file_search, platform));
         io.execute(() -> {
             try {
                 PublicSocialResolver.Result result = PublicSocialResolver.resolve(socialPage, videoOnly);
@@ -674,7 +673,7 @@ public final class MainActivity extends Activity {
                     return;
                 }
                 main.post(() -> { if(token==transferGeneration)
-                    status(platform + ": file " + result.mediaType + " rilevato; verifico e salvo…"); });
+                    status(getString(R.string.social_media_type_found, platform, result.mediaType)); });
                 fetchAndSave(result.mediaUrl, result.mediaType, SocialLinks.fileTag(socialPage), userAgent, token);
             } catch (Exception e) {
                 finishTransfer(token, platform + ": recupero non riuscito.",
@@ -797,10 +796,8 @@ public final class MainActivity extends Activity {
             if (page == null) {
                 manualProbeNonce++;
                 saving(false);
-                status("Pagina Instagram aperta, ma non riesco a identificare un singolo media. " +
-                    "Apri il Reel/Post a schermo intero o usa Copia link e Apri.");
-                toast("Il contenuto è visibile, ma manca il link diretto al Post/Reel. " +
-                    "Aprilo a schermo intero oppure incolla il suo link in alto.");
+                status(getString(R.string.instagram_media_not_identified));
+                toast(getString(R.string.instagram_direct_link_missing));
                 return;
             }
             manualProbeNonce++; // invalidate discovery watchdog
@@ -1087,7 +1084,7 @@ public final class MainActivity extends Activity {
                         "Per i contenuti pubblici servirà un eventuale resolver esterno con consenso.");
                     return;
                 }
-                status("File trovato con " + found.method + ": verifico e salvo il media…");
+                status(getString(R.string.media_found_by_method, found.method));
                 fetchAndSave(found.mediaUrl, found.mediaType, TargetParser.fileTag(page), userAgent, token);
             } catch (Exception e) {
                 finishTransfer(token, "Ricerca nel servizio Instagram non riuscita.",
