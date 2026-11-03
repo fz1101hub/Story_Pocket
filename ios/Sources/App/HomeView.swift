@@ -102,7 +102,7 @@ struct HomeView: View {
                     let temp = FileManager.default.temporaryDirectory
                         .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
                     do {
-                        guard MediaFilePolicy.isSupported(url) else {
+                        guard MediaFilePolicy.hasContent(url) else {
                             if access { url.stopAccessingSecurityScopedResource() }
                             status = NSLocalizedString("status.import_failed", comment: "")
                             return
