@@ -9,6 +9,7 @@ final class ShareViewController: UIViewController {
     private let action = UIButton(type: .system)
     private var pendingURL: URL?
     private var pendingFile: URL?
+    private var isSaving = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,17 +104,21 @@ final class ShareViewController: UIViewController {
         }
         guard let file = pendingFile else { return }
         action.isEnabled = false
+        isSaving = true
         message.text = NSLocalizedString("share.saving", comment: "")
         ExtensionPhotoSaver.save(file) { [weak self] success in
             DispatchQueue.main.async {
                 try? FileManager.default.removeItem(at: file)
                 self?.pendingFile = nil
+                self?.isSaving = false
                 self?.message.text = NSLocalizedString(success ? "status.saved" : "status.save_failed", comment: "")
             }
         }
     }
 
     @objc private func close() {
+        // PhotoKit may still be reading the temporary file: do not delete it mid-save.
+        guard !isSaving else { return }
         if let pendingFile { try? FileManager.default.removeItem(at: pendingFile) }
         extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
     }
