@@ -31,4 +31,7 @@
     <string name="shared_content_waiting">Warte auf geteilten Inhalt. Falls er nicht geöffnet wird, Link kopieren.</string>
     <string name="content_opened_save">Inhalt geöffnet: Foto/Video speichern oder Screenshot wählen.</string>
     <string name="share_to_start">Teile einen Social-Media-Link oder eine Mediendatei, um zu beginnen.</string>
+    <string name="screenshot_saved">Screenshot in Download/StoryPocket gespeichert ✓</string>
+    <string name="screenshot_png_saved">Screenshot als PNG gespeichert.</string>
+    <string name="screenshot_save_failed">Screenshot konnte nicht gespeichert werden.</string>
 </resources>
