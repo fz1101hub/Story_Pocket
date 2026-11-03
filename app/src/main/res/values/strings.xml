@@ -93,4 +93,10 @@
     <string name="shared_file_saved_location">File condiviso salvato in Download/StoryPocket ✓</string>
     <string name="shared_file_saved_success">File condiviso salvato.</string>
     <string name="shared_file_save_failed">Non è stato possibile salvare il file condiviso.</string>
+    <string name="player_not_responding">Il player non ha risposto</string>
+    <string name="save_already_running">Un salvataggio è già in corso</string>
+    <string name="shared_link_not_open">Il link condiviso non è ancora aperto</string>
+    <string name="content_not_open">Contenuto non aperto</string>
+    <string name="waiting_photo_or_video_cover">Attendo per distinguere una foto dalla copertina del video</string>
+    <string name="screenshot_photos_only_hint"> Prova Screenshot solo per le foto.</string>
 </resources>
