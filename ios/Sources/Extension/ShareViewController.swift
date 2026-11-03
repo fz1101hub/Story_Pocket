@@ -63,7 +63,7 @@ final class ShareViewController: UIViewController {
     /// This preserves .jpg/.png/.heic/.mp4 extensions for Photos validation.
     private func preferredMediaType(from provider: NSItemProvider, conformingTo category: UTType) -> UTType? {
         provider.registeredTypeIdentifiers
-            .compactMap(UTType.init)
+            .compactMap { UTType($0) }
             .first(where: { $0.conforms(to: category)
                 && $0.preferredFilenameExtension.map { ext in
                     MediaFilePolicy.isSupported(URL(fileURLWithPath: "shared." + ext))
