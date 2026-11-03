@@ -1,0 +1,28 @@
+# Generated build outputs
+.gradle/
+.idea/
+build/
+app/build/
+local.properties
+*.iml
+*.apk
+*.aab
+*.apks
+.DS_Store
+# Never commit signing keys or credentials
+*.jks
+*.keystore
+*.p12
+*.p8
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+secrets.properties
+keystore.properties
+# Logs and temporary files
+*.log
+*.tmp
+__pycache__/
+*.pyc
