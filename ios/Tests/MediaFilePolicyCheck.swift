@@ -35,6 +35,12 @@ struct MediaFilePolicyCheck {
         try handle.truncate(atOffset: UInt64(MediaFilePolicy.maximumFileBytes + 1))
         try handle.close()
         precondition(!MediaFilePolicy.hasAcceptableSize(oversized), "Oversized file accepted")
+        let boundary = directory.appendingPathComponent("boundary.mp4")
+        try Data([0x01]).write(to: boundary)
+        let boundaryHandle = try FileHandle(forWritingTo: boundary)
+        try boundaryHandle.truncate(atOffset: UInt64(MediaFilePolicy.maximumFileBytes))
+        try boundaryHandle.close()
+        precondition(MediaFilePolicy.hasContent(boundary), "Maximum allowed size rejected")
         precondition(!MediaFilePolicy.hasContent(oversized), "Oversized media accepted")
         precondition(MediaFilePolicy.hasAcceptableSize(directory.appendingPathComponent("sample.mp4")))
 
