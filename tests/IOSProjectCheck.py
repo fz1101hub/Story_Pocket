@@ -49,6 +49,10 @@ require("MediaFilePolicy.hasContent(file)" in app
 require("MediaFilePolicy.hasContent(url)" in app
         and "MediaFilePolicy.isSupported" in share,
         "unsupported and oversized imports are rejected before copying")
+require("MediaFilePolicy.hasAcceptableSize(temporaryURL)" in share,
+        "share extension checks file size before copying")
+require("preferredMediaType(from: provider" in share,
+        "share extension selects concrete media representations")
 require("MediaFilePolicy.hasContent(temp)" in app and "MediaFilePolicy.hasContent(destination)" in share,
         "copied media is checked before Photos save")
 require("requestAuthorization(for: .addOnly)" in app
