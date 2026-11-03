@@ -425,13 +425,13 @@ public final class MainActivity extends Activity {
             if (streamedMedia != null && "content".equals(streamedMedia.getScheme()) &&
                     mime != null && (mime.startsWith("image/") || mime.startsWith("video/"))) {
                 Uri incoming = streamedMedia;
-                status("File multimediale ricevuto: salvataggio in Download/StoryPocket…");
+                status(getString(R.string.shared_media_saving));
                 int token = startTransfer();
                 io.execute(() -> copySharedMedia(incoming, mime, token));
                 return true;
             }
-            status("Nessun link social o file multimediale valido nella condivisione.");
-            toast("Condividi un link HTTPS da un social oppure un file foto/video.");
+            status(getString(R.string.shared_content_invalid));
+            toast(getString(R.string.share_https_or_media));
             return true;
         }
         profileInput.setText(target);
