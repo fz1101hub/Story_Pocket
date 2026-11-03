@@ -47,6 +47,8 @@ require("MediaFilePolicy.hasContent(file)" in app
 require("MediaFilePolicy.isSupported" in app
         and "MediaFilePolicy.isSupported" in share,
         "unsupported imports are rejected before saving")
+require("MediaFilePolicy.hasContent(temp)" in app and "MediaFilePolicy.hasContent(destination)" in share,
+        "copied media is checked before Photos save")
 require("requestAuthorization(for: .addOnly)" in app
         and "requestAuthorization(for: .addOnly)" in share,
         "both Photos save paths request add-only permission")
