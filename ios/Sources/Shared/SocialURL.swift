@@ -40,6 +40,14 @@ enum SocialURL {
         return normalize(value)
     }
 
+    static func allowsBrowserNavigation(_ url: URL) -> Bool {
+        guard let parts = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
+        if parts.scheme?.lowercased() == "about" { return url.absoluteString.lowercased() == "about:blank" }
+        return parts.scheme?.lowercased() == "https" && parts.host != nil
+            && parts.user == nil && parts.password == nil
+            && (parts.port == nil || parts.port == 443)
+    }
+
     static func extract(_ text: String) -> URL? {
         if let url = normalize(text) { return url }
         let pattern = #"https://[^\s<>"']+"#
