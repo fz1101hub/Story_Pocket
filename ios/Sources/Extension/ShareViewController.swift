@@ -105,6 +105,9 @@ final class ShareViewController: UIViewController {
                     }
                     return
                 }
+                guard MediaFilePolicy.hasAcceptableSize(temporaryURL) else {
+                    throw NSError(domain: NSCocoaErrorDomain, code: NSFileReadCorruptFileError)
+                }
                 try FileManager.default.copyItem(at: temporaryURL, to: destination)
                 guard MediaFilePolicy.hasContent(destination) else {
                     throw NSError(domain: NSCocoaErrorDomain, code: NSFileReadCorruptFileError)
