@@ -1005,7 +1005,7 @@ public final class MainActivity extends Activity {
                 return;
             }
             try {
-                if (raw == null || "null".equals(raw)) throw new Exception("Nessun risultato dal player.");
+                if (raw == null || "null".equals(raw)) throw new Exception(getString(R.string.player_no_result));
                 String decoded = new JSONArray("[" + raw + "]").getString(0);
                 JSONObject result = new JSONObject(decoded);
                 if (result.has("error") &&
@@ -1218,18 +1218,18 @@ public final class MainActivity extends Activity {
                 try { format = MediaTypePolicy.classifyResponse(conn.getContentType(), type, first); }
                 catch (IllegalArgumentException e) { throw new IOException(e.getMessage()); }
                 if (!MediaTypePolicy.matchesExpectedType(type, format)) {
-                    throw new IOException("Il social ha restituito un media di tipo diverso (possibile copertina).");
+                    throw new IOException(getString(R.string.download_wrong_media_type));
                 }
                 if (!MediaTypePolicy.hasValidSignature(format, first)) {
-                    throw new IOException("Il server ha restituito una pagina o un file non valido.");
+                    throw new IOException(getString(R.string.download_invalid_response));
                 }
                 ensureActive(token, transferGeneration, deadline);
                 String name = filenameTag + "_" + System.currentTimeMillis() + "." + format.extension;
                 pending = insertDownload(name, format.mime);
-                if (pending == null) throw new IOException("Impossibile creare il file in Download.");
+                if (pending == null) throw new IOException(getString(R.string.download_create_failed));
                 long total = 0L, lastUpdate = 0L;
                 try (OutputStream output = getContentResolver().openOutputStream(pending)) {
-                    if (output == null) throw new IOException("Impossibile aprire il file in Download.");
+                    if (output == null) throw new IOException(getString(R.string.download_open_failed));
                     byte[] buffer = new byte[16384];
                     int n;
                     while (true) {
@@ -1248,8 +1248,8 @@ public final class MainActivity extends Activity {
                         }
                     }
                 }
-                if (total == 0) throw new IOException("Il media ricevuto è vuoto.");
-                if (length > 0 && total != length) throw new IOException("Download incompleto, prova di nuovo.");
+                if (total == 0) throw new IOException(getString(R.string.download_empty_media));
+                if (length > 0 && total != length) throw new IOException(getString(R.string.download_incomplete));
             }
             ensureActive(token, transferGeneration, deadline);
             publishDownload(pending);
@@ -1283,23 +1283,23 @@ public final class MainActivity extends Activity {
                     count += n;
                 }
                 in.reset();
-                if (!MediaTypePolicy.hasValidSignature(fmt, first)) throw new IOException("Il file condiviso non è un media supportato.");
+                if (!MediaTypePolicy.hasValidSignature(fmt, first)) throw new IOException(getString(R.string.shared_unsupported_media));
                 pending = insertDownload("condiviso_" + System.currentTimeMillis() + "." + fmt.extension, fmt.mime);
-                if (pending == null) throw new IOException("Impossibile creare il file in Download.");
+                if (pending == null) throw new IOException(getString(R.string.download_create_failed));
                 long total = 0;
                 try (OutputStream out = getContentResolver().openOutputStream(pending)) {
-                    if (out == null) throw new IOException("Impossibile aprire il file di destinazione.");
+                    if (out == null) throw new IOException(getString(R.string.shared_destination_failed));
                     byte[] buffer = new byte[16384];
                     while (true) {
                         ensureActive(token, transferGeneration, deadline);
                         n = in.read(buffer);
                         if (n == -1) break;
                         total += n;
-                        if (total > MAX_FILE_BYTES) throw new IOException("File troppo grande (oltre 120 MB).");
+                        if (total > MAX_FILE_BYTES) throw new IOException(getString(R.string.shared_file_too_large));
                         out.write(buffer, 0, n);
                     }
                 }
-                if (total == 0) throw new IOException("Il file condiviso è vuoto.");
+                if (total == 0) throw new IOException(getString(R.string.shared_empty_file));
             }
             ensureActive(token, transferGeneration, deadline);
             publishDownload(pending);
@@ -1364,10 +1364,10 @@ public final class MainActivity extends Activity {
         try {
             String name = "schermata_" + username + "_" + System.currentTimeMillis() + ".png";
             pending = insertDownload(name, "image/png");
-            if (pending == null) throw new IOException("Impossibile creare la schermata.");
+            if (pending == null) throw new IOException(getString(R.string.screenshot_create_failed));
             try (OutputStream output = getContentResolver().openOutputStream(pending)) {
                 if (output == null || !bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
-                    throw new IOException("Impossibile scrivere il PNG.");
+                    throw new IOException(getString(R.string.screenshot_png_failed));
                 }
             }
             publishDownload(pending);
