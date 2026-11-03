@@ -62,4 +62,16 @@
     <string name="capturing_screen">Sichtbarer Bildschirm wird aufgenommen…</string>
     <string name="screen_capture_failed">Bildschirmaufnahme fehlgeschlagen.</string>
     <string name="capture_not_allowed">Das Gerät oder der Player erlaubt diese Aufnahme nicht.</string>
+    <string name="social_page_opened">%1$s-Seite geöffnet. Tippe auf Speichern, um nach einer öffentlichen Datei zu suchen, oder nutze Screenshot.</string>
+    <string name="social_link_received">%1$s-Link empfangen. Inhalt wird geöffnet…</string>
+    <string name="social_link_opened">%1$s-Link geöffnet. Speichere geteilte Dateien oder nutze Screenshot; direkter Download ist eventuell nicht verfügbar.</string>
+    <string name="auto_search_progress">Suche (%1$d/%2$d), endet innerhalb von 25 Sekunden…</string>
+    <string name="shared_media_not_found">Geteiltes Medium nicht gefunden: %1$s</string>
+    <string name="social_auto_extract_unavailable">Dieser Inhalt von %1$s kann nicht automatisch extrahiert werden.</string>
+    <string name="instagram_media_not_identified">Instagram-Seite geöffnet, aber kein einzelnes Medium erkannt. Öffne Reel/Beitrag im Vollbild oder nutze Link kopieren und Öffnen.</string>
+    <string name="instagram_direct_link_missing">Der Inhalt ist sichtbar, aber der direkte Link zum Beitrag/Reel fehlt. Öffne ihn im Vollbild oder füge den Link oben ein.</string>
+    <string name="media_found_by_method">Datei über %1$s gefunden: Medium wird geprüft und gespeichert…</string>
+    <string name="social_direct_unavailable">%1$s: Link erkannt, aber direkter Download nicht verfügbar. Teile die Originaldatei oder nutze Screenshot.</string>
+    <string name="social_public_file_search">%1$s: Suche nach einer verfügbaren öffentlichen Datei…</string>
+    <string name="social_media_type_found">%1$s: %2$s-Datei erkannt; wird geprüft und gespeichert…</string>
 </resources>
