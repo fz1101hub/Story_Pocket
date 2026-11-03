@@ -21,3 +21,4 @@
 "share.copy" = "Copy link";
 "share.copied" = "Link copied.";
 "share.saving" = "Saving…";
+"status.file_too_large" = "This file exceeds the 120 MiB limit.";
