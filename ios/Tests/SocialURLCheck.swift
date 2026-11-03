@@ -17,6 +17,9 @@ struct SocialURLCheck {
         expect("http://instagram.com/post", nil)
         expect("https://user:password@instagram.com/post", nil)
         expect("https://instagram.com:8080/post", nil)
+        expect("https://instagram.com/post#fragment", nil)
+        expect("https://instagram.com:443/post", "https://instagram.com:443/post")
+        expect("https://www.instagram.com/p/abc?utm_source=share", "https://www.instagram.com/p/abc?utm_source=share")
         expect("A link (https://www.instagram.com/p/abc).", "https://www.instagram.com/p/abc")
         func expectIncoming(_ input: String, _ expected: String?) {
             guard let url = URL(string: input) else { fatalError("Invalid test URL: \(input)") }
