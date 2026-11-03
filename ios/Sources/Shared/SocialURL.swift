@@ -24,8 +24,17 @@ enum SocialURL {
 
     static func extract(_ text: String) -> URL? {
         if let url = normalize(text) { return url }
-        guard let range = text.range(of: #"https://[^\s<>"']+"#, options: .regularExpression) else { return nil }
-        let candidate = String(text[range]).trimmingCharacters(in: CharacterSet(charactersIn: ".,;)"))
-        return normalize(candidate)
+        let pattern = #"https://[^\\s<>"']+"#
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
+            return nil
+        }
+        let matches = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
+        for match in matches {
+            guard let range = Range(match.range, in: text) else { continue }
+            let candidate = String(text[range])
+                .trimmingCharacters(in: CharacterSet(charactersIn: ".,;)]}"))
+            if let url = normalize(candidate) { return url }
+        }
+        return nil
     }
 }
