@@ -26,6 +26,7 @@ struct BrowserView: UIViewRepresentable {
                      windowFeatures: WKWindowFeatures) -> WKWebView? {
             // Handle target=_blank in the same ephemeral browser instead of opening a popup.
             guard navigationAction.targetFrame == nil,
+                  navigationAction.navigationType == .linkActivated,
                   let destination = navigationAction.request.url,
                   SocialURL.allowsBrowserNavigation(destination) else { return nil }
             webView.load(navigationAction.request)
