@@ -21,3 +21,4 @@
 "share.copy" = "Link kopieren";
 "share.copied" = "Link kopiert.";
 "share.saving" = "Wird gespeichert…";
+"status.file_too_large" = "Diese Datei überschreitet die Grenze von 120 MiB.";
