@@ -101,6 +101,9 @@ struct HomeView: View {
                             return
                         }
                         try FileManager.default.copyItem(at: url, to: temp)
+                        guard MediaFilePolicy.hasContent(temp) else {
+                            throw NSError(domain: NSCocoaErrorDomain, code: NSFileReadCorruptFileError)
+                        }
                         if access { url.stopAccessingSecurityScopedResource() }
                         isSaving = true
                         status = NSLocalizedString("share.saving", comment: "")
