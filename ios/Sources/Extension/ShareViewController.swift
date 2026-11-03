@@ -171,8 +171,9 @@ private enum ExtensionPhotoSaver {
             PHPhotoLibrary.shared().performChanges({
                 if isVideo {
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: file)
-                } else if let image {
-                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                } else if image != nil {
+                    // Preserve the original file format and embedded metadata.
+                    PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: file)
                 }
             }) { success, _ in completion(success) }
         }
