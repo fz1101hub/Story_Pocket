@@ -34,4 +34,7 @@
     <string name="screenshot_saved">Screenshot saved to Download/StoryPocket ✓</string>
     <string name="screenshot_png_saved">Screenshot saved as PNG.</string>
     <string name="screenshot_save_failed">Could not save the screenshot.</string>
+    <string name="shared_media_saving">Media file received: saving to Download/StoryPocket…</string>
+    <string name="shared_content_invalid">No valid social link or media file found in the shared content.</string>
+    <string name="share_https_or_media">Share an HTTPS social link or a photo/video file.</string>
 </resources>
