@@ -103,8 +103,11 @@ struct HomeView: View {
                         .appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
                     do {
                         guard MediaFilePolicy.hasContent(url) else {
+                            let tooLarge = MediaFilePolicy.isTooLarge(url)
                             if access { url.stopAccessingSecurityScopedResource() }
-                            status = NSLocalizedString("status.import_failed", comment: "")
+                            status = NSLocalizedString(
+                                tooLarge ? "status.file_too_large" : "status.import_failed", comment: ""
+                            )
                             return
                         }
                         try FileManager.default.copyItem(at: url, to: temp)
