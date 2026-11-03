@@ -31,4 +31,7 @@
     <string name="shared_content_waiting">Waiting for shared content. If it does not open, use Copy link.</string>
     <string name="content_opened_save">Content opened: tap Save photo/video or Screenshot.</string>
     <string name="share_to_start">Share a social link or media file to get started.</string>
+    <string name="screenshot_saved">Screenshot saved to Download/StoryPocket ✓</string>
+    <string name="screenshot_png_saved">Screenshot saved as PNG.</string>
+    <string name="screenshot_save_failed">Could not save the screenshot.</string>
 </resources>
