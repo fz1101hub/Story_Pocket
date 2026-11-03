@@ -31,6 +31,8 @@ require(".nonPersistent()" in browser,
         "embedded browser does not persist website sessions")
 require("SocialURL.allowsBrowserNavigation" in browser,
         "browser validates navigation destinations")
+require("navigationAction.navigationType == .linkActivated" in browser,
+        "new-window navigation requires a user-activated link")
 require("SocialURL.normalize(url.absoluteString)" in browser,
         "browser validates initial social URL")
 require("SocialURL.incoming(incoming)" in app,
