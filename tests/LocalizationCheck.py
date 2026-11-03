@@ -87,6 +87,15 @@ def main():
         raise ValueError(f"Android/MainActivity.java: {len(hardcoded_feedback)} hardcoded status/toast messages")
     print("Android: no literal status/toast messages")
     check("iOS", ios, IOS_PLACEHOLDER)
+    # System permission prompts live in InfoPlist.strings, not Localizable.strings.
+    ios_privacy = {
+        language: ios_strings(IOS_BASE / f"{language}.lproj" / "InfoPlist.strings")
+        for language in LANGUAGES
+    }
+    check("iOS InfoPlist", ios_privacy, IOS_PLACEHOLDER)
+    for language, strings in ios_privacy.items():
+        if "NSPhotoLibraryAddUsageDescription" not in strings:
+            raise ValueError(f"iOS InfoPlist/{language}: missing Photos add-only permission prompt")
     # Verify explicit NSLocalizedString keys in the app and share extension.
     swift_sources = [
         ROOT / "ios/Sources/App/HomeView.swift",
