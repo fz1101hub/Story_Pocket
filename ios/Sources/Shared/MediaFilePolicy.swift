@@ -16,6 +16,13 @@ enum MediaFilePolicy {
         return images.contains(ext) || videos.contains(ext)
     }
 
+    static func isTooLarge(_ file: URL) -> Bool {
+        guard file.isFileURL,
+              let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
+              let bytes = attributes[.size] as? NSNumber else { return false }
+        return bytes.int64Value > maximumFileBytes
+    }
+
     static func hasAcceptableSize(_ file: URL) -> Bool {
         guard file.isFileURL,
               let attributes = try? FileManager.default.attributesOfItem(atPath: file.path),
