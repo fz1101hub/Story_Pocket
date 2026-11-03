@@ -11,4 +11,12 @@
     <string name="cancel">✕ Vorgang abbrechen</string>
     <string name="cancelled">Vorgang abgebrochen. Kein aktiver Download.</string>
     <string name="nothing_running">Kein Vorgang aktiv.</string>
+    <string name="social_platforms">Instagram · TikTok · Pinterest · Reddit · Bluesky · weitere</string>
+    <string name="platform_detected">✓ %1$s erkannt · Teilen → StoryPocket</string>
+    <string name="loading">Wird geladen…</string>
+    <string name="link_copied">Link in die Zwischenablage kopiert.</string>
+    <string name="invalid_link_first">Öffne oder füge zuerst einen gültigen Social-Media-Link ein.</string>
+    <string name="info_title">StoryPocket · So funktioniert es</string>
+    <string name="info_body">Öffne eine Social-Media-App und wähle Teilen → StoryPocket. Du kannst auch einen Link einfügen oder eine Foto-/Videodatei teilen. Direkte Downloads sind nicht immer verfügbar; einige Plattformen schränken sie ein. Dateien werden unter Download/StoryPocket gespeichert. Die App ist nicht mit den Plattformen verbunden. Speichere nur Inhalte, die du behalten darfst.</string>
+    <string name="understood">Verstanden</string>
 </resources>
