@@ -26,6 +26,8 @@ struct SocialURLCheck {
         expect("https://instagram.com:443/post", "https://instagram.com:443/post")
         expect("https://www.instagram.com/p/abc?utm_source=share", "https://www.instagram.com/p/abc?utm_source=share")
         expect("A link (https://www.instagram.com/p/abc).", "https://www.instagram.com/p/abc")
+        expect("Regardez «https://www.instagram.com/reel/abc»", "https://www.instagram.com/reel/abc")
+        expect("Lien ‹https://bsky.app/profile/test/post/1›", "https://bsky.app/profile/test/post/1")
         expect("“https://www.instagram.com/reel/abc”", "https://www.instagram.com/reel/abc")
         expect("‘https://bsky.app/profile/test/post/1’", "https://bsky.app/profile/test/post/1")
         expect("Vedi https://www.instagram.com/reel/abc” ora", "https://www.instagram.com/reel/abc")
