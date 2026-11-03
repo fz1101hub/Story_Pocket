@@ -108,8 +108,8 @@ public final class MainActivity extends Activity {
     private final Runnable autoTimeout = () -> {
         if (pendingSharedContent != null && SystemClock.elapsedRealtime() >= autoDeadline) {
             cancelAutoDownload();
-            status("Ricerca terminata: Instagram non ha reso disponibile il file entro 25 secondi.");
-            toast("Download non disponibile. Puoi provare Salva manualmente o Screenshot.");
+            status(getString(R.string.auto_timeout));
+            toast(getString(R.string.auto_unavailable));
         }
     };
 
@@ -332,12 +332,11 @@ public final class MainActivity extends Activity {
                 // Returning true cancels the navigation, keeping StoryPocket in front.
                 if (request.isForMainFrame()) {
                     if (decision == NavigationPolicy.Decision.BLOCK_APP_LINK) {
-                        navigationNotice("Il social sta tentando di aprire un’altra app: reindirizzamento bloccato. " +
-                            "Il video deve caricarsi qui per poter essere scaricato.", request.hasGesture());
+                        navigationNotice(getString(R.string.blocked_app_redirect), request.hasGesture());
                     } else if (decision == NavigationPolicy.Decision.BLOCK_EXTERNAL_WEB) {
-                        navigationNotice("Collegamento esterno bloccato. Usa Copia se vuoi aprirlo separatamente.", request.hasGesture());
+                        navigationNotice(getString(R.string.blocked_external_link), request.hasGesture());
                     } else {
-                        navigationNotice("Tipo di collegamento non supportato: navigazione bloccata.", request.hasGesture());
+                        navigationNotice(getString(R.string.blocked_link_type), request.hasGesture());
                     }
                 }
                 return true;
@@ -345,7 +344,7 @@ public final class MainActivity extends Activity {
             @Override public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 if (request.isForMainFrame()) {
                     cancelAutoDownload();
-                    status("La pagina del social non è stata caricata. Controlla connessione e accesso.");
+                    status(getString(R.string.page_load_failed));
                 }
             }
             @Override public void onReceivedHttpError(WebView view, WebResourceRequest request,
