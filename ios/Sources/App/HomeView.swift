@@ -103,15 +103,23 @@ extension URL: @retroactive Identifiable {
 
 enum PhotoSaver {
     static func save(_ file: URL, completion: @escaping (Bool) -> Void) {
+        // Validate and decode before requesting permission or creating an asset.
+        // Otherwise PhotoKit can report success after a no-op change block.
+        let isVideo = ["mov", "mp4", "m4v"].contains(file.pathExtension.lowercased())
+        let image = isVideo ? nil : UIImage(contentsOfFile: file.path)
+        guard isVideo || image != nil else {
+            completion(false)
+            return
+        }
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             guard status == .authorized || status == .limited else {
                 completion(false)
                 return
             }
             PHPhotoLibrary.shared().performChanges({
-                if ["mov", "mp4", "m4v"].contains(file.pathExtension.lowercased()) {
+                if isVideo {
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: file)
-                } else if let image = UIImage(contentsOfFile: file.path) {
+                } else if let image {
                     PHAssetChangeRequest.creationRequestForAsset(from: image)
                 }
             }) { saved, _ in completion(saved) }
