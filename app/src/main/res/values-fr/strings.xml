@@ -19,4 +19,10 @@
     <string name="info_title">StoryPocket · Mode d\'emploi</string>
     <string name="info_body">Ouvrez un réseau social et choisissez Partager → StoryPocket. Vous pouvez aussi coller un lien ou partager un fichier photo/vidéo. Le téléchargement direct n\'est pas toujours possible et certaines plateformes imposent des restrictions. Les fichiers sont enregistrés dans Download/StoryPocket. Cette application n\'est affiliée à aucun réseau social. N\'enregistrez que les contenus que vous êtes autorisé à conserver.</string>
     <string name="understood">Compris</string>
+    <string name="auto_timeout">Recherche terminée : Instagram n’a pas fourni le fichier sous 25 secondes.</string>
+    <string name="auto_unavailable">Téléchargement indisponible. Essayez l’enregistrement manuel ou une capture d’écran.</string>
+    <string name="blocked_app_redirect">Le réseau social a tenté d’ouvrir une autre application : redirection bloquée. La vidéo doit se charger ici pour être téléchargée.</string>
+    <string name="blocked_external_link">Lien externe bloqué. Utilisez Copier pour l’ouvrir séparément.</string>
+    <string name="blocked_link_type">Type de lien non pris en charge : navigation bloquée.</string>
+    <string name="page_load_failed">Impossible de charger la page du réseau social. Vérifiez la connexion et votre compte.</string>
 </resources>
